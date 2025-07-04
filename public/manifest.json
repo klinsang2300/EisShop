@@ -1,11 +1,11 @@
 
 {
-  "name": "EisShop",
-  "short_name": "My shop",
-  "description": "An example of a Next.js PWA application.",
-  "start_url": "/",
+   "name": "EisShop",
+  "short_name": "Eis-Shop",
+  "theme_color": "#2196F3",
+  "background_color": "#F5F5F5",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#000000"
-
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/"
 }

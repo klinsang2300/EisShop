@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image";
 import React, { useEffect, useState, useRef, useCallback } from "react";
-import "./Css/Slide.css";
+import "./Slide.css";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 interface SlideImage {
@@ -112,7 +112,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                         <Image
                             src={images[currentSlideIndex].src}
                             alt={images[currentSlideIndex].alt}
-                            fill
                             className="slide-image"
                         />
                     </div>
@@ -126,8 +125,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                         >
                             <Image
                                 src={images[previousSlideIndex].src}
-                                alt={images[previousSlideIndex].alt}
-                                fill
+                                alt={images[previousSlideIndex].alt}                           
                                 className="slide-image"
                             />
                         </div>

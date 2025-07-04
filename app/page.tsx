@@ -1,4 +1,4 @@
-import ImageSlider from "@/Component/ImageSlider";
+import ImageSlider from "@/Component/Slide/ImageSlider";
 import RecommendArtists from "@/Component/Recommended/Recommend";
 import Review from "@/Component/Review";
 import slide1 from '@/public/slide/1.png'
@@ -11,7 +11,9 @@ import logo2 from '@/public/logo/Tmw.png'
 import logo3 from '@/public/logo/EN.png'
 import logo4 from '@/public/logo/7t.png'
 import logo5 from '@/public/logo/Nct.png'
-export default function Home() {
+import { ProductBts, ProductEn, ProductNct, ProductSt, ProductTwm } from "@/lib/data";
+import RecommendProduct from "@/Component/Product/Recproduct";
+export default async function Home() {
   const slides = [
     { src: slide1, alt: 'Knit Cardigan Beige' },
     { src: slide2, alt: 'Product Merchandise' },
@@ -34,20 +36,57 @@ export default function Home() {
     { src: logo4, name: 'SEVENTEEN' },
     { src: logo5, name: 'NCT' },
   ]
-
-
+  const productBts = await ProductBts();
+  const productTmw = await ProductTwm();
+  const productEn = await ProductEn();
+  const productSt = await ProductSt();
+  const productNct = await ProductNct();
   return (
     <div className="page-container">
-      <div>
-        <ImageSlider images={slides} autoPlay={true} />
+      <div className="page-container-bg1">
+        <div className="page-container-bg2">
+          <div>
+            <ImageSlider images={slides} autoPlay={true} />
+          </div>
+          <div className="my-[2%]">
+            <Review reviews={dummyReviews} />
+          </div>
+        </div>
       </div>
-      <div className="my-[2%]">
-        <Review reviews={dummyReviews} />
-      </div>
-      <div className="my-[9%] mx-[15%]">
+
+      <div className="my-[3%] mx-[15%]">
         <RecommendArtists RecArtists={RecArtists} />
       </div>
-      <div className="my-[2%]">1111</div>
+      <div className="my-[3%] mx-[15%] ">
+        <RecommendProduct
+          AstistName="BTS"
+          productData={productBts}
+          headColorStr="--my-custom-gradient-gray" />
+      </div>
+      <div className="my-[3%] mx-[15%] ">
+        <RecommendProduct
+          AstistName="TOMMORROW X TOGETHER"
+          productData={productTmw}
+          headColorStr="--my-custom-gradient-red" />
+      </div>
+      <div className="my-[3%] mx-[15%] ">
+        <RecommendProduct
+          AstistName="ENHYPEN"
+          productData={productEn}
+          headColorStr="--my-custom-gradient-grays" />
+      </div>
+      <div className="my-[3%] mx-[15%] ">
+        <RecommendProduct
+          AstistName="SEVENTEEN"
+          productData={productSt}
+          headColorStr="--my-custom-gradient-pink" />
+      </div>
+            <div className="my-[3%] mx-[15%] ">
+        <RecommendProduct
+          AstistName="NCT"
+          productData={productNct}
+          headColorStr="--my-custom-gradient-green" />
+      </div>
     </div>
   );
 }

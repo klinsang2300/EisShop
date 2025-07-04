@@ -1,39 +1,44 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* --- Custom Properties --- */
 :root {
-  --spacing: 1vw;
+  --spacing: 100vw;
+  --my-custom-gradient-gray: linear-gradient(to right,
+      rgba(87, 87, 87) 0%,
+      rgba(184, 184, 184) 52%,
+      rgba(91, 91, 91) 100%);
+  --my-custom-gradient-red: linear-gradient(to right,
+      rgba(93, 4, 3) 0%,
+      rgba(187, 187, 187) 52%,
+      rgba(92, 2, 1) 100%);
+  --my-custom-gradient-grays: linear-gradient(to right,
+      rgba(50, 50, 50) 0%,
+      rgba(136, 136, 136) 25%,
+      rgba(54, 54, 54) 49%,
+      rgba(136, 136, 136) 75%,
+      rgba(50, 50, 50) 100%);
+  --my-custom-gradient-pink: linear-gradient(to right,
+      rgba(247, 201, 201) 0%,
+      rgba(146, 168, 209) 100%);
+        --my-custom-gradient-green: linear-gradient(to right,
+      rgba(192, 215, 37) 0%,
+      rgba(199, 208, 135) 25%,
+      rgba(192, 215, 37) 49%,
+      rgba(199, 208, 135) 75%,
+      rgba(192, 215, 37) 100%);
 }
 
 body {
   display: flex;
   flex-direction: column;
-background-color: #ffffff;
+  background-color: #F5F5F5;
   color: #565656;
-}
-
-main {
-
-height: 100dvh;
-  background-image: linear-gradient(to left,
-      rgba(128, 179, 255, 0.3) 0%,
-
-      rgba(228, 239, 255, 0.3) 32%,
-
-      rgba(228, 239, 255, 0.3) 64%,
-
-      rgba(128, 179, 255, 0.3) 100%);
-  backdrop-filter: blur(50px);
-
-
+  width: 100%;
 }
 
 main.main-content-blurred {
   opacity: 0.7;
   transition: opacity 0.3s ease-in-out;
-
-  /* pointer-events: none;
-  user-select: none; */
 }
 
 a:focus,
@@ -41,7 +46,32 @@ a:focus-visible {
   outline: none;
 }
 
+.page-container {
+  display: flex;
+  flex-direction: column;
 
-.page-container{
-  margin-block: 3%;
+  .page-container-bg1 {
+    display: block;
+    padding-block: 4rem;
+    background-color: #DBEBF3;
+    background-image: linear-gradient(to right,
+        rgba(128, 179, 255, 0.3) 0%,
+
+        rgba(228, 239, 255, 0.3) 32%,
+
+        rgba(228, 239, 255, 0.3) 64%,
+
+        rgba(128, 179, 255, 0.3) 100%) linear-gradient(to right,
+        /* Gradient ตัวล่าง */
+        rgba(89, 88, 88, 0.3) 0%,
+        rgba(202, 202, 202, 0.3) 32%,
+        rgba(202, 202, 202, 0.3) 64%,
+        rgba(89, 88, 88, 0.3) 100%);
+    ;
+    backdrop-filter: blur(50px);
+
+  }
+
+
+
 }
