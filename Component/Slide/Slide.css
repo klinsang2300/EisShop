@@ -20,15 +20,16 @@
         opacity: 1;
     }
 }
+
 .slider-container {
     height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 100%; 
-    max-width: 1400px; 
-    margin: 0 auto; 
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
     /* ตัวเลือก: เพิ่ม padding ด้านข้างสำหรับจอเล็ก เพื่อไม่ให้เนื้อหาชนขอบ */
     /* padding: 0 1rem; */
 }
@@ -36,72 +37,77 @@
 .slider-con {
     display: flex;
     justify-content: center;
-    align-items: center; 
-    width: 100%; 
+    align-items: center;
+    width: 100%;
 }
 
 .slider-image-wrapper {
     position: relative;
-    max-width: 78.125rem; /* 1250px: ขนาดสูงสุดของรูปภาพ */
-    width: 100%; /* ทำให้ลดขนาดลงเมื่อจอย่อ */
-    aspect-ratio: 1250 / 702; /* รักษาอัตราส่วนของรูปภาพ (ประมาณ 1.78) */
+    max-width: 78.125rem;
+    /* 1250px: ขนาดสูงสุดของรูปภาพ */
+    width: 100%;
+    /* ทำให้ลดขนาดลงเมื่อจอย่อ */
+    aspect-ratio: 1250 / 702;
+    /* รักษาอัตราส่วนของรูปภาพ (ประมาณ 1.78) */
     overflow: hidden;
-    flex: 1; 
+    flex: 1;
 
 
-    max-height: 43.875rem; /* 702px: กำหนดความสูงสูงสุดตามขนาดรูปภาพเดิมของคุณ */
+    max-height: 43.875rem;
+    /* 702px: กำหนดความสูงสูงสุดตามขนาดรูปภาพเดิมของคุณ */
 
 }
-    .slide-item {
-       
-        top: 0;
-        left: 0;
-        width: 100%; 
-        height: 100%; 
-        opacity: 1;
-        pointer-events: none; 
-    }
 
-    .slide-item .slide-image {
-        object-fit: cover;
-        width: 100%; 
-        height: 100%; 
-    }
+.slide-item {
 
-    .current-slide {
-        z-index: 2; 
-        animation: fadeInAnimation 1s ease-in forwards;
-    }
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    pointer-events: none;
+}
 
-    .previous-slide {
-        z-index: 1; 
-    }
+.slide-item .slide-image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
 
-    .previous-slide.fade-out {
-        animation: fadeOutAnimation 1s ease-in forwards;
-    }
+.current-slide {
+    z-index: 2;
+    animation: fadeInAnimation 1s ease-in forwards;
+}
+
+.previous-slide {
+    z-index: 1;
+}
+
+.previous-slide.fade-out {
+    animation: fadeOutAnimation 1s ease-in forwards;
+}
 
 
 .slider-arrow {
     border: none;
-    background-color: transparent; 
+    background-color: transparent;
     color: #B7C2D3;
     cursor: pointer;
     opacity: 1;
-    transition: opacity 0.3s ease, background-color 0.3s ease; 
-    padding: 0 1rem; 
-    z-index: 3; 
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+    padding: 0 1rem;
+    z-index: 3;
 }
 
 .slider-arrow:disabled {
-    opacity: 0.5; 
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 .slider-arrow svg {
-    width: 4vw; 
-    height: 4vw; 
-    max-width: 9rem; 
+    width: 8vw;
+    height: 8vw;
+    max-width: 9rem;
     max-height: 9rem;
 }
 
@@ -110,29 +116,29 @@
     display: flex;
     height: fit-content;
     align-items: center;
-    gap: 0.8vw; 
+    gap: 0.8vw;
 }
 
 .slider-dots .dot {
-    width: 1.2vw; 
-    height: 1.2vw; 
-    min-width: 12px; 
+    width: 1.2vw;
+    height: 1.2vw;
+    min-width: 12px;
     min-height: 12px;
-    max-width: 1.5rem; 
+    max-width: 1.5rem;
     max-height: 1.5rem;
 
     border-radius: 50%;
     background-color: #E2E2E2;
-    opacity: 0.3; 
+    opacity: 0.3;
     cursor: pointer;
-    transition: background-color 1s ease, transform 1s ease, opacity 1s ease, translate 1s ease-in; 
+    transition: background-color 1s ease, transform 1s ease, opacity 1s ease, translate 1s ease-in;
     box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(4rem); 
+    backdrop-filter: blur(4rem);
 }
 
 .slider-dots .dot.active {
-    background-color: rgba(99, 115, 140, 0.5); 
-    transform: scale(1.1); 
-    opacity: 0.3; 
+    background-color: rgba(99, 115, 140, 0.5);
+    transform: scale(1.1);
+    opacity: 0.3;
     translate: 0 -0.03rem;
 }
