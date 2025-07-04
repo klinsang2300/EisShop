@@ -1,0 +1,222 @@
+/* components/NavBar/NavBar.css */
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffff;
+
+   width: 100%;
+  height: 4.5rem; 
+  padding: 0 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  top: 0; /* <-- เพิ่ม: ให้ nav ชิดขอบบน */
+  left: 0; /* <-- เพิ่ม: ให้ nav ชิดขอบซ้าย */
+  z-index: 100; /* ให้ Navbar อยู่ด้านบนสุด */
+}
+
+nav .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+nav .nav-logo .nav-logo-text {
+  font-size: 3.349rem;
+  font-family: var(--font-plaster), cursive;
+}
+
+nav .nav-logo .nav-logo-text a {
+  text-decoration: none;
+  color: inherit;
+  /* ให้สีเหมือน parent */
+}
+
+nav .nav-logo .nav-logo-luge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+nav .nav-logo .nav-logo-luge button {
+  font-size: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-prompt), sans-serif;
+  /* ใช้ฟอนต์หลัก */
+}
+
+nav .nav-logo .nav-logo-luge p {
+  font-size: 0.6rem;
+  color: #666;
+}
+
+nav .nav-menu {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  list-style: none;
+  /* ลบ bullet points ของ ul */
+  padding: 0;
+  margin: 0;
+}
+
+nav .nav-menu li {
+  margin-inline: 0.063rem;
+  position: relative;
+  /* สำคัญ: ทำให้ li เป็น reference point สำหรับ menu-recommend (dropdown) */
+  /* padding-bottom: 5px; */
+  /* หากมีช่องว่างระหว่างปุ่มกับเมนู ลองเพิ่มตรงนี้ */
+}
+
+nav .nav-menu li .nav-menu-link {
+  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  text-decoration: none;
+  color: inherit;
+  font-family: var(--font-prompt), sans-serif;
+  /* ใช้ฟอนต์หลัก */
+  white-space: nowrap;
+  /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+}
+
+nav .nav-menu li .nav-menu-link:hover {
+  background-color: #F2F2F2;
+}
+
+nav .nav-menu li .nav-menu-button {
+  border-radius: 0.2rem;
+  padding: 0.7rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: inherit;
+  color: inherit;
+  font-family: var(--font-prompt), sans-serif;
+  /* ใช้ฟอนต์หลัก */
+  white-space: nowrap;
+}
+
+nav .nav-menu li .nav-menu-button span {
+  margin-left: 2px;
+  font-size: 0.8rem;
+}
+
+nav .nav-menu li .nav-menu-button:hover {
+  background-color: #F2F2F2;
+}
+
+nav .nav-button {
+  display: flex;
+  align-items: center;
+  background-color: #E4EFFF;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  font-family: var(--font-prompt), sans-serif;
+  /* ใช้ฟอนต์หลัก */
+}
+
+nav .nav-button button {
+  padding: 0.3rem 0.7rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: inherit;
+  color: inherit;
+}
+
+nav .nav-button button:hover {
+  color: #88B3F5;
+}
+
+nav .nav-button p {
+  margin-inline: 0.188rem;
+  font-size:0.6rem;
+  color: #666;
+}
+
+/* Dropdown Menu (menu-recommend) */
+nav .menu-recommend {
+ display: flex;
+  flex-direction: column;
+  /* width: max-content; */ /* <-- ลบออก */
+  /* min-width: 250px; */ /* <-- ลบออก */
+  width: 100%; /* <-- เปลี่ยน: ให้กว้าง 100% ของ parent (ซึ่งคือ viewport เนื่องจาก position: fixed) */
+  background-color: rgba(177, 177, 177, 0.5);
+  
+  position: fixed; /* <-- เปลี่ยน: ใช้ fixed เพื่อจัดตำแหน่งเทียบกับ viewport */
+  top: 4.5rem; /* <-- เปลี่ยน: ตำแหน่งด้านล่าง NavBar พอดี (ตรงกับ height ของ nav) */
+  left: 0; /* <-- เพิ่ม: ให้ชิดขอบซ้ายของ Browser */
+  right: 0; /* <-- เพิ่ม: ให้ชิดขอบขวาของ Browser */
+
+  height: fit-content;
+  padding-inline: calc(var(--spacing)*5);
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px); /* สำหรับ Safari */
+  box-sizing: border-box; /* สำคัญ: เพื่อให้ padding ไม่ดัน width เกิน */
+  border: none; /* <-- ลบ border เพื่อให้ดู seamless กับขอบจอ */
+  border-radius: 0; /* <-- ลบ border-radius เพื่อให้เป็นสี่เหลี่ยมผืนผ้าเต็มขอบจอ */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 99; /* อยู่ใต้ NavBar แต่เหนือเนื้อหาหลัก */
+
+
+}
+
+nav .menu-recommend .menu-recommend-text {
+  margin-block: 0.6rem;
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: #333;
+  /* กำหนดสีข้อความให้ชัดเจน */
+  font-family: var(--font-prompt), sans-serif;
+  /* ใช้ฟอนต์หลัก */
+}
+
+nav .menu-recommend .menu-recommend-img {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+nav .menu-recommend .menu-recommend-img a{
+  transition:transform 200ms;
+  &:hover{
+     transform: scale(1.03);
+  }
+}
+
+nav .menu-recommend .menu-recommend-img .main-div-logo {
+  position: relative;
+  width: 25.936rem;
+  height: 13.96rem;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+nav .menu-recommend .menu-recommend-img .main-div-logo img {
+  object-fit: cover;
+}
+
+nav .menu-recommend .menu-showmore-porduct {
+  display: flex;
+  justify-content: flex-end;
+  /* แก้เป็น flex-end แทน end */
+  margin-block: 0.5rem;
+}
+
+nav .menu-recommend .menu-showmore-porduct .button-showmore-porduct {
+  border-radius: 0.2rem;
+  color: #ED2629;
+  font-size: 0.5rem;
+  font-weight: 500;
+  padding: 0.2rem 0.3rem;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-prompt), sans-serif;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.6);
+  }
+}

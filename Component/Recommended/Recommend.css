@@ -1,0 +1,76 @@
+.rec-container {
+
+ 
+    background-image: linear-gradient(to right,
+            rgba(255, 255, 255, 1) 0%,
+
+            rgba(235, 243, 255, 1) 100%);
+    border-radius: 2rem;
+    box-shadow: 0.2rem 0.2rem 0.4rem rgba(0,0,0,0.2);
+    margin: 0 auto;
+
+    .rec-bg {
+      display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(to right,
+      rgba(88, 88, 88, 0.1) 0%,
+
+      rgba(202, 202, 202, 0.1) 32%,
+
+      rgba(202, 202, 202, 0.1) 64%,
+
+      rgba(88, 88, 88, 0.1) 100%);
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    margin: 0 auto;
+        .rec-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+
+            /* เพิ่มระยะห่างด้านล่าง header */
+            p {
+                font-size: 1.199rem;
+                font-weight: bold;
+            }
+        }
+
+        .rec-mainlogo {
+            display: flex;
+
+
+            .rec-arc {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.3rem;
+                width: 100px;
+                text-align: center;
+
+
+                .rec-arc-logo {
+                    position: relative;
+                    width: 4.875rem;
+                    height: 4.875rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                    background-color: #eee;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+
+                .rec-act-name {
+                    font-size: 0.674rem;
+                    color: #565656;
+                    white-space: normal;
+                    word-break: break-word;
+                    line-height: 1.2;
+                    margin-top: 0.3rem;
+
+                }
+            }
+        }
+    }
+}
