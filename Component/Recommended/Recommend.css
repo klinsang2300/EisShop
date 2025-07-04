@@ -1,6 +1,7 @@
 .rec-container {
 
- 
+     max-width: 1440px;
+     width: 100%;
     background-image: linear-gradient(to right,
             rgba(255, 255, 255, 1) 0%,
 

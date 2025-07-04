@@ -3,6 +3,7 @@
 import Image, { StaticImageData } from "next/image"
 import React from "react"
 import './RecPro.css'
+import Link from "next/link"
 interface Product {
     src: string | StaticImageData,
     nameProduct: string,
@@ -46,7 +47,9 @@ const RecommendProduct: React.FC<RecommendProductProps> =
                             </div>
                         ))}
                     </div>
-                    <div className="box-product-button">See All Product</div>
+                    <div className="box-product-button">
+                       <Link href="/">See All Product</Link> 
+                        </div>
                 </div>
 
            

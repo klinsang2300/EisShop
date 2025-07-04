@@ -3,8 +3,10 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
 
-    
     .review-name {
 
         font-size: 1.25rem;
@@ -19,38 +21,45 @@
 
     .review-main {
         display: flex;
+        justify-content: space-between;
         gap: 3rem;
-
+        width: 100%;
+        margin-top: 1.5rem;
         .review-card {
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content:center;
+            justify-content: center;
             background-color: #F4F5F8;
             border-radius: 1rem;
-            width: 25.125rem;
-            min-height: 19.063rem;
-            padding: 2rem;
+            max-width: 28.125rem;
+            width: 100%;
+            aspect-ratio: 450 / 337.26;
+
+            padding: 2rem 2rem;
             box-sizing: border-box;
             text-align: center;
-            box-shadow: 0.125rem 0.125rem 0.125rem rgb( 0,0,0,0.2 );
+            box-shadow: 0.1rem 0.1rem 0.2rem rgb(0, 0, 0, 0.2);
+
             .review-header {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
- 
+
                 .reviewer-name {
                     font-size: 1.164rem;
                     font-weight: 500;
                     color: #565656;
                 }
+
                 .review-star-container {
                     display: flex;
                     align-items: center;
+
                     svg {
                         width: 1.212rem;
                         height: 1.212rem;
-                        margin: 0 ;
+                        margin: 0;
                         vertical-align: middle;
                     }
                 }
@@ -58,12 +67,11 @@
 
 
             .review-detail-wrapper {
-                position: relative;
                 width: 100%;
-                padding: 0 1.5rem;
+
                 box-sizing: border-box;
-                margin-block:  2rem 1rem;
-                &::before {
+                margin-block: 2rem 1rem;
+                /* &::before {
                     content: '“';
                     position: absolute;
                     top: 0;
@@ -94,20 +102,16 @@
                     font-family: serif;
                     line-height: 0;
                     z-index: 1;
-                }
+                } */
 
                 .review-text {
-                    /* เปลี่ยนจาก .review-detail เป็น .review-text */
-                    font-size: 1.375rem;
+
+                    font-size: 1.37rem;
                     text-align: center;
                     font-weight: 500;
                     color: #565656;
-                    /* สีข้อความรีวิว */
-                    position: relative;
-                    /* สำคัญ: ทำให้ข้อความอยู่ด้านบนของ pseudo-elements */
-                    z-index: 2;
-                    /* สูงกว่า pseudo-elements */
-                    /* อาจจะต้องปรับ margin-top หรือ margin-bottom เพิ่มเติม ตามขนาดและตำแหน่งของ quote mark */
+
+
                 }
             }
         }

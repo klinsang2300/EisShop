@@ -3,6 +3,9 @@
   flex-direction: column;
   box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
   border-radius: 0px 0px 2rem 2rem;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
 
   .pro-art-name {
     color: #FFFFFF;
@@ -28,19 +31,39 @@
       justify-items: center;
       width: 100%;
       padding-inline: 1rem;
+      position: relative;
+
+      &:not(:last-child)::after {
+      
+        content: '';
+        position: absolute;
+        top: 5%;
+     
+        bottom: 5%;
+     
+        right: 0;
+     
+        width: 2px;
+
+        background-color: #D9D8D8;
+
+
+      }
 
       .box-product-image {
         position: relative;
         max-width: 16.25rem;
-        width: 100%;
+        width: 60%;
         aspect-ratio: 260/260;
         margin: 0 auto;
         margin-bottom: 1rem;
-        transition: 0.2s ;
+        transition: 0.2s;
+
         box-image {
           position: absolute;
         }
-        &:hover{
+
+        &:hover {
           scale: 1.1;
         }
       }
@@ -82,8 +105,19 @@
     background-color: #F6F6F6;
     padding-block: 0.7rem;
     text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #828282;
+    cursor: pointer;
 
+    &:hover {
+      background-color: #ececec;
+    }
 
+    &:active {
+      background-color: #6483B0;
+      color: #ffffff;
+    }
   }
 
 

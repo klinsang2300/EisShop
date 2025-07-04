@@ -27,8 +27,9 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    max-width: 1920px;
     width: 100%;
-    max-width: 1400px;
+
     margin: 0 auto;
     /* ตัวเลือก: เพิ่ม padding ด้านข้างสำหรับจอเล็ก เพื่อไม่ให้เนื้อหาชนขอบ */
     /* padding: 0 1rem; */
@@ -43,17 +44,16 @@
 
 .slider-image-wrapper {
     position: relative;
-    max-width: 78.125rem;
+    max-width: 90rem;
     /* 1250px: ขนาดสูงสุดของรูปภาพ */
     width: 100%;
     /* ทำให้ลดขนาดลงเมื่อจอย่อ */
-    aspect-ratio: 1250 / 702;
+    aspect-ratio: 16 / 9;
     /* รักษาอัตราส่วนของรูปภาพ (ประมาณ 1.78) */
     overflow: hidden;
     flex: 1;
 
 
-    max-height: 43.875rem;
     /* 702px: กำหนดความสูงสูงสุดตามขนาดรูปภาพเดิมของคุณ */
 
 }

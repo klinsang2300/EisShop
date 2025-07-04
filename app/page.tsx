@@ -43,45 +43,43 @@ export default async function Home() {
   const productNct = await ProductNct();
   return (
     <div className="page-container">
-      <div className="page-container-bg1">
-        <div className="page-container-bg2">
-          <div>
-            <ImageSlider images={slides} autoPlay={true} />
-          </div>
-          <div className="my-[2%]">
-            <Review reviews={dummyReviews} />
-          </div>
+      <div className="container-bg">
+        <div>
+          <ImageSlider images={slides} autoPlay={true} />
+        </div>
+        <div className="my-[2%] ">
+          <Review reviews={dummyReviews} />
         </div>
       </div>
 
-      <div className="my-[3%] mx-[15%]">
+      <div className="my-[3%] ">
         <RecommendArtists RecArtists={RecArtists} />
       </div>
-      <div className="my-[3%] mx-[15%] ">
+      <div className="my-[3%] ">
         <RecommendProduct
           AstistName="BTS"
           productData={productBts}
           headColorStr="--my-custom-gradient-gray" />
       </div>
-      <div className="my-[3%] mx-[15%] ">
+      <div className="my-[3%] ">
         <RecommendProduct
           AstistName="TOMMORROW X TOGETHER"
           productData={productTmw}
           headColorStr="--my-custom-gradient-red" />
       </div>
-      <div className="my-[3%] mx-[15%] ">
+      <div className="my-[3%]  ">
         <RecommendProduct
           AstistName="ENHYPEN"
           productData={productEn}
           headColorStr="--my-custom-gradient-grays" />
       </div>
-      <div className="my-[3%] mx-[15%] ">
+      <div className="my-[3%]  ">
         <RecommendProduct
           AstistName="SEVENTEEN"
           productData={productSt}
           headColorStr="--my-custom-gradient-pink" />
       </div>
-            <div className="my-[3%] mx-[15%] ">
+      <div className="my-[3%]  ">
         <RecommendProduct
           AstistName="NCT"
           productData={productNct}
