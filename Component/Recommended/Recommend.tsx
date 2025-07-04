@@ -4,7 +4,7 @@ import './Recommend.css' // ตรวจสอบให้แน่ใจว่�
 
 interface Artists {
     src: string | StaticImageData,
-    name: string
+    name: string,
 }
 interface ArtistsProps {
     RecArtists: Artists[];
