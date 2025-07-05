@@ -1,5 +1,6 @@
 import ImageSlider from "@/Component/Slide/ImageSlider";
 import RecommendArtists from "@/Component/Recommended/Recommend";
+import HotProduct from "@/Component/Product/HotProduct";
 import Review from "@/Component/Review";
 import slide1 from '@/public/slide/1.png'
 import slide2 from '@/public/slide/2.png'
@@ -11,8 +12,10 @@ import logo2 from '@/public/logo/Tmw.png'
 import logo3 from '@/public/logo/EN.png'
 import logo4 from '@/public/logo/7t.png'
 import logo5 from '@/public/logo/Nct.png'
-import { ProductBts, ProductEn, ProductNct, ProductSt, ProductTwm } from "@/lib/data";
+import { ProductBts, ProductEn, ProductHot, ProductNct, ProductSt, ProductTwm } from "@/lib/data";
 import RecommendProduct from "@/Component/Product/Recproduct";
+import { LuCircleArrowUp } from "react-icons/lu";
+import BackToTopButton from "@/Component/BackToTopButton";
 export default async function Home() {
   const slides = [
     { src: slide1, alt: 'Knit Cardigan Beige' },
@@ -41,6 +44,7 @@ export default async function Home() {
   const productEn = await ProductEn();
   const productSt = await ProductSt();
   const productNct = await ProductNct();
+  const productHot = await ProductHot();
   return (
     <div className="page-container">
       <div className="container-bg">
@@ -85,6 +89,14 @@ export default async function Home() {
           productData={productNct}
           headColorStr="--my-custom-gradient-green" />
       </div>
+
+      <div className="my-[3%]  ">
+        <HotProduct
+          productData={productHot} />
+      </div>
+
+     <BackToTopButton/>
+
     </div>
   );
 }

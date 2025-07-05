@@ -1,0 +1,148 @@
+.hot-product-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0.1rem 0.1rem  0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+    border-radius: 2rem 2rem;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+
+    .hot-product-header {
+        background-color: #ffffff;
+        font-size: 2.5rem;
+        font-weight: 600;
+        padding-block: 1rem;
+        border-radius: 2rem 2rem 0 0;
+
+        p {
+            margin-left: 2rem;
+            background-image: linear-gradient(to bottom, #FF1216 0%, #590D18 100%);
+
+
+            /* ทำให้พื้นหลังถูกคลิปตามรูปร่างของข้อความ */
+            -webkit-background-clip: text;
+            /* สำหรับ WebKit browsers (Chrome, Safari, Edge) */
+            background-clip: text;
+
+            /* ทำให้ข้อความโปร่งใส เพื่อให้ gradient ด้านหลังแสดงผล */
+            -webkit-text-fill-color: transparent;
+            /* สำหรับ WebKit browsers */
+            color: transparent;
+            /* สำหรับเบราว์เซอร์อื่นๆ (อาจไม่จำเป็นต้องใช้ร่วมกับ -webkit-text-fill-color) */
+
+            /* คุณสมบัติอื่นๆ ของข้อความ (ขนาด, font-weight ฯลฯ) */
+            font-size: 3rem;
+            /* ตัวอย่างขนาด */
+            font-weight: bold;
+            /* ตัวอย่างความหนา */
+            display: inline-block;
+            /* เพื่อให้ background-clip ทำงานได้ถูกต้องในบางกรณี */
+        }
+    }
+
+    .hot-product-box {
+        background-color: #FFFFFF;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+        padding-inline: 1rem;
+        padding-block: 2rem;
+        row-gap: 1rem;
+
+        .box-main {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            width: 100%;
+            padding-inline: 1rem;
+            position: relative;
+
+            &:not(:last-child)::after {
+
+                content: '';
+                position: absolute;
+                top: 5%;
+
+                bottom: 5%;
+
+                right: 0;
+
+                width: 2px;
+
+                background-color: #D9D8D8;
+
+
+            }
+
+            .box-image {
+                position: relative;
+                max-width: 16.25rem;
+                width: 60%;
+                aspect-ratio: 260/260;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+                transition: 0.2s;
+
+                box-img {
+                    position: absolute;
+                }
+
+                &:hover {
+                    scale: 1.1;
+                }
+            }
+
+            .box-name {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #828282;
+                margin-block: 0.25rem;
+            }
+
+            .box-price {
+                display: inline-flex;
+                font-size: 1rem;
+                font-weight: 400;
+                color: #434D5D;
+                margin-block: 0.25rem;
+
+                p {
+                    margin-left: 0.5rem;
+                    font-weight: 600;
+                }
+            }
+
+            .box-remask {
+                font-size: 0.75rem;
+                font-weight: 400;
+                border-radius: 0.4rem;
+                background-color: #F3F3F3;
+                width: fit-content;
+                padding: 0.4rem 0.7rem;
+                color: #AE5051;
+            }
+        }
+    }
+
+    .box-product-button {
+    border-radius: 0px 0px 2rem 2rem;
+    background-color: #F6F6F6;
+    padding-block: 0.7rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #828282;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ececec;
+    }
+
+    &:active {
+      background-color: #6483B0;
+      color: #ffffff;
+    }
+  }
+
+
+}
