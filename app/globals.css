@@ -65,18 +65,31 @@ a:focus-visible {
 
   .container-bg {
     padding-block: 4rem;
-
-    background-image:
+   background-image:
       var(--my-custom-gradient-main-blue), var(--my-custom-gradient-main-gray);
     backdrop-filter: blur(50px);
 
   }
 
+  .icon-to-top {
+    background-color: rgba(235, 235, 235, 0.15);
+    padding: 0.6rem 0.7rem;
+    right: 2rem;
+    bottom: 2rem;
+    position: fixed;
+    border-radius: 1rem;
+    cursor: pointer;
 
-
+    svg {
+      font-size: 2.3rem;
+      color: #1E1E1E;
+    
+    }
+  }
 }
 
-footer {
+
+footer{
   background-color: #565656;
   display: flex;
   justify-content: space-between;

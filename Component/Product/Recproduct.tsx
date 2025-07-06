@@ -2,7 +2,7 @@
 
 import Image, { StaticImageData } from "next/image"
 import React from "react"
-import './RecPro.css'
+import './css/RecPro.css'
 import Link from "next/link"
 interface Product {
     src: string | StaticImageData,
@@ -13,46 +13,46 @@ interface Product {
 interface RecommendProductProps {
     AstistName: string,
     productData: Product[],
-    headColorStr:string,
+    headColorStr: string,
 }
 const RecommendProduct: React.FC<RecommendProductProps> =
     ({ AstistName, productData, headColorStr }) => {
         return (
-                <div className="pro-container">
-                     <div
+            <div className="pro-container">
+                <div
                     className="pro-art-name"
-                    style={{ backgroundImage: `var(${headColorStr})` }} // <--- การเปลี่ยนแปลงตรงนี้
+                    style={{ backgroundImage: `var(${headColorStr})` }} 
                 >
-                        <p>{AstistName}</p>
-                    </div>
-                    <div className="box-product-container">
-                        {productData.map((item, index) => (
-                            <div className="box-product" key={index}>
-                                <div className="box-product-image">
-                                    <Image
-                                        src={item.src}
-                                        alt={item.nameProduct}
-                                        fill
-                                        className="box-image" />
-                                </div>
-                                <div className="box-product-name">
-                                    <p>{item.nameProduct}</p>
-                                </div>
-                                <div className="box-product-price">
-                                    PRICE<p> {item.price}  ฿</p>
-                                </div>
-                                <div className="box-product-remask">
-                                    {item.Remark}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="box-product-button">
-                       <Link href="/">See All Product</Link> 
-                        </div>
+                    <p>{AstistName}</p>
                 </div>
+                <div className="box-product-container">
+                    {productData.map((item, index) => (
+                        <div className="box-product" key={index}>
+                            <div className="box-product-image">
+                                <Image
+                                    src={item.src}
+                                    alt={item.nameProduct}
+                                    fill
+                                    className="box-image" />
+                            </div>
+                            <div className="box-product-name">
+                                <p>{item.nameProduct}</p>
+                            </div>
+                            <div className="box-product-price">
+                                PRICE<p> {item.price}  ฿</p>
+                            </div>
+                            <div className="box-product-remask">
+                                {item.Remark}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="box-product-button">
+                    <Link href="/">See All Product</Link>
+                </div>
+            </div>
 
-           
+
         )
     }
 export default RecommendProduct;
