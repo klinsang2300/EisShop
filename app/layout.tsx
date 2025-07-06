@@ -7,6 +7,7 @@ import { ProductMenuProvider } from "@/context/ProductMenuContext";
 import MainContentWrapper from "@/Component/MainContentWrapper";
 
 import NavBar from "@/Component/Navbar";
+import Footer from "@/Component/Footer";
 
 
 const prompt = Prompt({
@@ -43,6 +44,7 @@ export default function RootLayout({
         <ProductMenuProvider>
           <NavBar />
           <MainContentWrapper>{children}</MainContentWrapper>
+          <Footer/>
         </ProductMenuProvider>
       </body>
     </html>
