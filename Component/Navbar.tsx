@@ -114,9 +114,9 @@ const NavBar: React.FC = () => {
       </ul>
 
       <div className='nav-button'>
-        <button> LOGIN</button>
+        <Link href="/login" className="nav-button-link">LOGIN</Link> 
         <p>|</p>
-        <button>SIGN UP</button>
+        <button className="nav-button-link">SIGN UP</button>
       </div>
     </nav>
   );

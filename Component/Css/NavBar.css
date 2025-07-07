@@ -112,27 +112,29 @@ nav .nav-button {
   padding: 0.5rem 1rem;
   font-weight: 500;
   font-family: var(--font-prompt), sans-serif;
-  /* ใช้ฟอนต์หลัก */
+
+  .nav-button-link{
+    padding: 0.3rem 0.7rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: inherit;
+    color: inherit;
+
+    &:hover {
+      color: #88B3F5;
+    }
+  }
+
+  p {
+    margin-inline: 0.188rem;
+    font-size: 0.6rem;
+    color: #666;
+  }
 }
 
-nav .nav-button button {
-  padding: 0.3rem 0.7rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: inherit;
-  color: inherit;
-}
 
-nav .nav-button button:hover {
-  color: #88B3F5;
-}
 
-nav .nav-button p {
-  margin-inline: 0.188rem;
-  font-size: 0.6rem;
-  color: #666;
-}
 
 /* Dropdown Menu (menu-recommend) */
 nav .menu-recommend {
@@ -144,33 +146,7 @@ nav .menu-recommend {
   top: 4.5rem;
   padding-inline: 5%;
   background-color: rgba(177, 177, 177, 0.5);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  /* 
-
-
-  
-
-  top: 4.5rem;
-
-  left: 0;
-
-  right: 0;
-
-
-  height: fit-content;
-
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
-
-  box-sizing: border-box;
- 
-  border: none;
-
-  border-radius: 0;
-
-
-  z-index: 99; */
-
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
 
 }

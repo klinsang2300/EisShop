@@ -65,7 +65,7 @@ a:focus-visible {
 
   .container-bg {
     padding-block: 4rem;
-   background-image:
+    background-image:
       var(--my-custom-gradient-main-blue), var(--my-custom-gradient-main-gray);
     backdrop-filter: blur(50px);
 
@@ -83,22 +83,63 @@ a:focus-visible {
     svg {
       font-size: 2.3rem;
       color: #1E1E1E;
-    
+
     }
   }
 }
 
 
-footer{
+footer {
   background-color: #565656;
   display: flex;
   justify-content: space-between;
   color: #FFFFFF;
   align-items: center;
   padding-inline: 10%;
+  padding-block: 4rem;
 
   .ft-Logo {
     font-size: 4.263rem;
     font-family: var(--font-plaster), cursive;
+  }
+
+  .ft-contact-main {
+    .ft-contact-box {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .ft-contact {
+        display: flex;
+        padding: 0.1rem;
+        align-items: center;
+        gap: 0.2rem;
+
+        .ft-contact-img {
+          background-color: #FFFFFF;
+          border-radius: 50%;
+          padding: 0.23rem;
+
+          svg {
+            color: #565656;
+            font-size: 0.7rem;
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.auth-main {
+  height: 100vh;
+  background-image: var(--my-custom-gradient-main-blue), var(--my-custom-gradient-main-gray);
+
+  .login-container-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  
   }
 }

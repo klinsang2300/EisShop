@@ -26,7 +26,7 @@ const plaster = Plaster({
 export const metadata: Metadata = {
   title: 'Eis Shop',
   description: 'เว็บไซต์สำหรับคนที่อยากหาคนช่วยกดสั่งของ preorder ',
-  manifest: '/manifest.json', 
+  manifest: '/manifest.json',
   keywords: ['nextjs', 'pwa', 'web app'],
   authors: [{ name: 'Your Name' }],
   creator: 'Your Name',
@@ -41,11 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${prompt.variable} ${plaster.variable}`}>
       <body className={`${prompt.className}`}>
-        <ProductMenuProvider>
-          <NavBar />
-          <MainContentWrapper>{children}</MainContentWrapper>
-          <Footer/>
-        </ProductMenuProvider>
+         <ProductMenuProvider>
+        {children}
+</ProductMenuProvider>
       </body>
     </html>
   );
