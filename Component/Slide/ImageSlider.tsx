@@ -19,7 +19,7 @@ interface ImageSliderProps {
 const ImageSlider: React.FC<ImageSliderProps> = ({
     images,
     autoPlay = false,
-    autoPlayInterval = 3000,
+    autoPlayInterval = 4000,
 }) => {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     // สถานะใหม่สำหรับเก็บ index ของรูปภาพ "ก่อนหน้า" ที่กำลังเฟดออก
@@ -39,8 +39,10 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         // 1. ตั้งค่ารูปภาพปัจจุบันให้เป็นรูปภาพ "ก่อนหน้า"
         setPreviousSlideIndex(currentSlideIndex);
 
+
         // 2. หน่วงเวลาเล็กน้อยเพื่อให้ React อัปเดต DOM และแสดงรูปภาพเก่าใน div "previous"
         setTimeout(() => {
+            console.log(previousSlideRef.current)
             if (previousSlideRef.current) {
                 // เริ่ม animation fade-out บน div รูปภาพเก่า
                 previousSlideRef.current.classList.add('fade-out');
@@ -62,8 +64,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 setIsTransitioning(false); // สิ้นสุดสถานะ transitioning
             }, animationDuration); // ระยะเวลาที่รูปเก่าเฟดออก (ควรตรงกับ animation duration ใน CSS)
 
-        }, 0); // หน่วงเวลา 0ms เพื่อให้ React มีโอกาส batch state updates
-              // และ render previousSlideIndex ก่อน setCurrentSlideIndex
+        }, 0); 
 
     }, [currentSlideIndex, isTransitioning]);
 
@@ -102,8 +103,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                     <IoIosArrowBack/>
                 </button>
                 <div className="slider-image-wrapper">
-                    {/* DIV สำหรับรูปภาพปัจจุบัน (จะเฟดเข้า) */}
-                    {/* key prop สำคัญมาก เพื่อให้ div นี้ถูกสร้างใหม่และ animation เริ่มต้น */}
                     <div 
                         key={`current-slide-div-${currentSlideIndex}`} 
                         ref={currentSlideRef} 
@@ -121,7 +120,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                         <div 
                             key={`previous-slide-div-${previousSlideIndex}`} 
                             ref={previousSlideRef} 
-                            className={`slide-item previous-slide`}
+                            className={`slide-item previous-slide `}
                         >
                             <Image
                                 src={images[previousSlideIndex].src}

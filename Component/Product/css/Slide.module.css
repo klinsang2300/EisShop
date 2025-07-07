@@ -1,0 +1,102 @@
+/* components/ImageSlider/ImageSlider.module.css */
+
+.sliderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+
+    .slidesWrapper {
+        display: flex;
+        width: 100%;
+        position: relative;
+
+        .imageWrapper {
+            position: relative;
+            max-width: 720px;
+            width: 100%;
+            aspect-ratio: 720 / 500;
+            overflow: hidden;
+
+            .slideImage {
+                object-fit: cover;
+            }
+        }
+
+        .imageWrapper.left {
+            border-radius: 1.5rem 0 0 1.5rem;
+        }
+
+        .imageWrapper.right {
+            border-radius: 0 1.5rem 1.5rem 0;
+        }
+
+
+        .navButton {
+            position: absolute;
+            background-color: #F3F2F2;
+            cursor: pointer;
+            border-radius: 50%;
+            top: 45%;
+            padding: 0.7rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #79747E;
+            border-color: #CCCCCC;
+            border-width: 0.039rem;
+            border-style: solid;
+
+        }
+
+        .prevButton {
+            left: 10px;
+        }
+
+        .nextButton {
+            right: 10px;
+        }
+    }
+
+    .dotsContainer {
+        display: flex;
+        justify-content: center;
+        margin-top: 1rem;
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #333;
+        }
+    }
+
+
+
+
+}
+
+/* .slidesWrapper {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+*/

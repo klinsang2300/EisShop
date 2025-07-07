@@ -9,11 +9,11 @@ export default function MainLayout({
     children: React.ReactNode
 }) {
     return (
-        <>
+        <div className="Pagemain">
             <NavBar />
             <MainContentWrapper> {children}</MainContentWrapper>
             <Footer />
-        </>
+        </div>
 
     )
 }

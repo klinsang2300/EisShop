@@ -48,7 +48,7 @@ const RecommendProduct: React.FC<RecommendProductProps> =
                     ))}
                 </div>
                 <div className="box-product-button">
-                    <Link href="/">See All Product</Link>
+                    <Link href={`/product/${AstistName}`}>See All Product</Link>
                 </div>
             </div>
 

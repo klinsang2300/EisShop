@@ -14,7 +14,6 @@ import logo4 from '@/public/logo/7t.png'
 import logo5 from '@/public/logo/Nct.png'
 import { ProductBts, ProductEn, ProductHot, ProductNct, ProductSt, ProductTwm } from "@/lib/data";
 import RecommendProduct from "@/Component/Product/Recproduct";
-import { LuCircleArrowUp } from "react-icons/lu";
 import BackToTopButton from "@/Component/BackToTopButton";
 export default async function Home() {
   const slides = [
@@ -47,7 +46,7 @@ export default async function Home() {
   const productHot = await ProductHot();
   return (
     <div className="page-container">
-      <div className="container-bg">
+      <div className="container-slide">
         <div>
           <ImageSlider images={slides} autoPlay={true} />
         </div>
@@ -55,47 +54,47 @@ export default async function Home() {
           <Review reviews={dummyReviews} />
         </div>
       </div>
+      <div className="container-product">
+        <div className="my-[3%] ">
+          <RecommendArtists RecArtists={RecArtists} />
+        </div>
+        <div className="my-[3%] ">
+          <RecommendProduct
+            AstistName="BTS"
+            productData={productBts}
+            headColorStr="--my-custom-gradient-gray" />
+        </div>
+        <div className="my-[3%] ">
+          <RecommendProduct
+            AstistName="TOMMORROW X TOGETHER"
+            productData={productTmw}
+            headColorStr="--my-custom-gradient-red" />
+        </div>
+        <div className="my-[3%]  ">
+          <RecommendProduct
+            AstistName="ENHYPEN"
+            productData={productEn}
+            headColorStr="--my-custom-gradient-grays" />
+        </div>
+        <div className="my-[3%]  ">
+          <RecommendProduct
+            AstistName="SEVENTEEN"
+            productData={productSt}
+            headColorStr="--my-custom-gradient-pink" />
+        </div>
+        <div className="my-[3%]  ">
+          <RecommendProduct
+            AstistName="NCT"
+            productData={productNct}
+            headColorStr="--my-custom-gradient-green" />
+        </div>
 
-      <div className="my-[3%] ">
-        <RecommendArtists RecArtists={RecArtists} />
+        <div className="my-[3%]  ">
+          <HotProduct
+            productData={productHot} />
+        </div>
       </div>
-      <div className="my-[3%] ">
-        <RecommendProduct
-          AstistName="BTS"
-          productData={productBts}
-          headColorStr="--my-custom-gradient-gray" />
-      </div>
-      <div className="my-[3%] ">
-        <RecommendProduct
-          AstistName="TOMMORROW X TOGETHER"
-          productData={productTmw}
-          headColorStr="--my-custom-gradient-red" />
-      </div>
-      <div className="my-[3%]  ">
-        <RecommendProduct
-          AstistName="ENHYPEN"
-          productData={productEn}
-          headColorStr="--my-custom-gradient-grays" />
-      </div>
-      <div className="my-[3%]  ">
-        <RecommendProduct
-          AstistName="SEVENTEEN"
-          productData={productSt}
-          headColorStr="--my-custom-gradient-pink" />
-      </div>
-      <div className="my-[3%]  ">
-        <RecommendProduct
-          AstistName="NCT"
-          productData={productNct}
-          headColorStr="--my-custom-gradient-green" />
-      </div>
-
-      <div className="my-[3%]  ">
-        <HotProduct
-          productData={productHot} />
-      </div>
-
-     <BackToTopButton/>
+      <BackToTopButton />
 
     </div>
   );

@@ -102,7 +102,7 @@ const NavBar: React.FC = () => {
                 </Link>
               </div>
               <div className='menu-showmore-porduct'>
-                <button className='button-showmore-porduct'>SHOW MORE</button>
+                <Link href='/product' className='button-showmore-porduct'>SHOW MORE</Link>
               </div>
             </div>
           )}

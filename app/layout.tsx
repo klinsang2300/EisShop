@@ -41,9 +41,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${prompt.variable} ${plaster.variable}`}>
       <body className={`${prompt.className}`}>
-         <ProductMenuProvider>
-        {children}
-</ProductMenuProvider>
+        <ProductMenuProvider>
+          {children}
+        </ProductMenuProvider>
       </body>
     </html>
   );

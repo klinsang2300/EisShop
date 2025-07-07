@@ -1,7 +1,5 @@
-/* components/ImageSlider.css */
 
-/* Keyframes สำหรับ Fade */
-@keyframes fadeOutAnimation {
+@keyframes fadeOutA {
     from {
         opacity: 1;
     }
@@ -27,7 +25,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    max-width: 1920px;
+    max-width: 1600px;
     width: 100%;
 
     margin: 0 auto;
@@ -59,7 +57,7 @@
 }
 
 .slide-item {
-
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -84,7 +82,8 @@
 }
 
 .previous-slide.fade-out {
-    animation: fadeOutAnimation 1s ease-in forwards;
+    animation: fadeOutA 1s ease-in forwards;
+
 }
 
 

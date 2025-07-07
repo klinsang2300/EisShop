@@ -1,7 +1,7 @@
 .hot-product-container {
     display: flex;
     flex-direction: column;
-    box-shadow: 0.1rem 0.1rem  0.1rem 0.1rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
     border-radius: 2rem 2rem;
     max-width: 1440px;
     width: 100%;
@@ -57,7 +57,7 @@
             padding-inline: 1rem;
             position: relative;
 
-            &:not(:last-child)::after {
+            &:not(:last-of-type)::after {
 
                 content: '';
                 position: absolute;
@@ -125,24 +125,24 @@
     }
 
     .box-product-button {
-    border-radius: 0px 0px 2rem 2rem;
-    background-color: #F6F6F6;
-    padding-block: 0.7rem;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #828282;
-    cursor: pointer;
+        border-radius: 0px 0px 2rem 2rem;
+        background-color: #F6F6F6;
+        padding-block: 0.7rem;
+        text-align: center;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: #828282;
+        cursor: pointer;
 
-    &:hover {
-      background-color: #ececec;
-    }
+        &:hover {
+            background-color: #ececec;
+        }
 
-    &:active {
-      background-color: #6483B0;
-      color: #ffffff;
+        &:active {
+            background-color: #6483B0;
+            color: #ffffff;
+        }
     }
-  }
 
 
 }
