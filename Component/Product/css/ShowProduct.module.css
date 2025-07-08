@@ -1,0 +1,155 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1440px;
+    width: 100%;
+    margin: 0 auto;
+
+    .header {
+        background-color: #566479;
+        font-size: 2.681rem;
+        color: #FFFFFF;
+        font-weight: 400;
+        padding: 0.8rem 1rem;
+
+        p {
+            margin-left: 2rem;
+        }
+    }
+
+    .tabdataContainer {
+        display: flex;
+        padding: 1.8rem 2rem;
+        background-color: #f6f6f6;
+
+        .tabdata {
+            margin-left: 1%;
+            font-size: 0.813rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-inline: 1%;
+            border-radius: 1rem;
+            min-width: 10.375rem;
+            min-height: 2.047rem;
+            background-color: #ffffff;
+            cursor: pointer;
+
+        }
+
+        .tabdata:hover,
+        .tabdata.active {
+            background-color: #565656;
+            color: #ffffff
+        }
+    }
+
+    .ProductContainer {
+        background-color: #FFFFFF;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        justify-content: space-between;
+        padding-inline: 1rem;
+        padding-block: 2rem 5rem;
+        row-gap: 1rem;
+
+        .ProductBox {
+            display: flex;
+            flex-direction: column;
+            justify-items: center;
+            width: 100%;
+            padding-inline: 1rem;
+            position: relative;
+
+            .ProductImg {
+                position: relative;
+                max-width: 16.25rem;
+                width: 60%;
+                aspect-ratio: 260/260;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+                transition: 0.2s;
+
+                box-img {
+                    position: absolute;
+                }
+
+                &:hover {
+                    scale: 1.1;
+                }
+            }
+
+            .ProductName {
+                font-size: 1rem;
+                font-weight: 500;
+                color: #828282;
+                margin-block: 0.25rem;
+            }
+
+            .ProductPrice {
+                display: inline-flex;
+                font-size: 1rem;
+                font-weight: 400;
+                color: #434D5D;
+                margin-block: 0.25rem;
+
+                p {
+                    margin-left: 0.5rem;
+                    font-weight: 600;
+                }
+            }
+
+            .ProductRemark {
+                font-size: 0.75rem;
+                font-weight: 400;
+                border-radius: 0.4rem;
+                background-color: #F3F3F3;
+                width: fit-content;
+                padding: 0.4rem 0.7rem;
+                color: #AE5051;
+            }
+        }
+    }
+
+    .paginationDotsContainer {
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-block: 2rem 3rem;
+
+        .paginationDot {
+            width: 1.3rem;
+            height: 0.34rem;
+            background-color: #ccc;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+
+            &:hover {
+                background-color: #999;
+            }
+        }
+
+        .paginationDot.activeDot {
+            background-color: #565656;
+        }
+        .navButton{
+            font-size: 1.2rem;
+            margin-bottom: 0.1rem;
+        }
+       .prevPageButton{
+            margin-right: 0.6rem;
+        }
+        .navButton.nextPageButton{  margin-left: 0.6rem;}
+    }
+
+
+
+
+
+
+
+
+}

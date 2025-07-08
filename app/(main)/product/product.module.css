@@ -1,12 +1,18 @@
-.container{
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
 
-    .slide{
+    .slide {
         width: 100%;
         height: fit-content;
-        margin-block: 4%;
+        margin-block: 3%;
+    }
+
+    .BoxProduct {
+        width: 100%;
+        height: fit-content;
+        margin-block: 0 4%;
     }
 }

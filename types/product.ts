@@ -10,3 +10,16 @@ export interface SlideContent {
     image2: ImageItem;
 }
 
+export interface ProductType {
+    src: string | StaticImageData,
+    nameProduct: string,
+    price: string,
+    Remark: string
+}
+
+export interface ProductData {
+    sliderImages: ProductType[];
+}
+export interface ProductProp {
+    [key: string]: ProductData; 
+}
