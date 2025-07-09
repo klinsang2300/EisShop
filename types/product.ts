@@ -23,3 +23,8 @@ export interface ProductData {
 export interface ProductProp {
     [key: string]: ProductData; 
 }
+
+
+export interface ProductDetail{
+    [key:string] :ProductType
+}

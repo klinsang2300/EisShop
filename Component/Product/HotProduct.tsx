@@ -24,6 +24,7 @@ const HotProduct: React.FC<RecommendProductProps> = ({ productData }) => {
                                 src={item.src}
                                 alt={item.nameProduct}
                                 className="box-img"
+                                fill
                             />
                         </div>
                         <div className="box-name">{item.nameProduct}</div>

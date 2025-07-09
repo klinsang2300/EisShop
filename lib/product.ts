@@ -14,11 +14,11 @@ interface ProductShow {
 
 export const getProductHilglight =  async  (bandSlug: string) => {
     const slides = await slide(bandSlug);
-    const Products = ProductShowAll();
+    const Products = ProductShowAll(bandSlug);
 
     const mockData:ProductShow={
         ImageSlide : slides.sliderImages,
-        Product:Products
+        Product:Products[bandSlug]
     }
 
 

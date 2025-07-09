@@ -1,4 +1,31 @@
 /* components/ImageSlider/ImageSlider.module.css */
+/* Keyframes สำหรับ Fade-in Animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    /* เริ่มจากโปร่งใส */
+    to {
+        opacity: 1;
+    }
+
+    /* ไปยังทึบแสง */
+}
+
+/* Keyframes สำหรับ Fade-out Animation */
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    /* เริ่มจากทึบแสง */
+    to {
+        opacity: 0;
+    }
+
+    /* ไปยังโปร่งใส */
+}
 
 .sliderContainer {
     display: flex;
@@ -13,6 +40,7 @@
         display: flex;
         width: 100%;
         position: relative;
+        gap: 4rem;
 
         .imageWrapper {
             position: relative;
@@ -20,20 +48,54 @@
             width: 100%;
             aspect-ratio: 720 / 500;
             overflow: hidden;
+            border-radius: 1.4rem;
 
             .slideImage {
                 object-fit: cover;
             }
         }
 
-        .imageWrapper.left {
-            border-radius: 1.5rem 0 0 1.5rem;
+        .slidePage {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            /* เพื่อจัดเรียง imageWrapper ซ้ายขวา */
+            justify-content: center;
+            /* จัดให้เนื้อหาอยู่ตรงกลางแนวนอน */
+            align-items: center;
+            /* จัดให้เนื้อหาอยู่ตรงกลางแนวตั้ง */
+            /* .slidePage ตัวมันเองจะไม่มีการ fade แล้ว, การ fade จะอยู่บน imageWrapper */
+            gap: 4rem;
         }
 
-        .imageWrapper.right {
-            border-radius: 0 1.5rem 1.5rem 0;
+        /* Class สำหรับ previous slide ที่จะอยู่ทับและ fade ออก */
+        .previous-slide-overlay {
+            z-index: 2;
+            /* ทำให้สไลด์เก่าอยู่เหนือสไลด์ใหม่ที่กำลังจะเข้ามา */
         }
 
+        .imageWrapper.fade-in {
+            animation: fade-in 1s forwards;
+
+            z-index: 1;
+
+        }
+
+
+        .imageWrapper.fade-out {
+            animation: fade-out 1s forwards;
+
+            z-index: 3;
+
+        }
+
+        .slideImage {
+            object-fit: cover;
+
+        }
 
         .navButton {
             position: absolute;
@@ -41,8 +103,8 @@
             cursor: pointer;
             border-radius: 50%;
             top: 45%;
-            padding: 0.7rem;
-            font-size: 2.2rem;
+            padding: 0.3rem;
+            font-size: 2.1rem;
             font-weight: 600;
             color: #79747E;
             border-color: #CCCCCC;
@@ -66,8 +128,8 @@
         margin-top: 1rem;
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             background-color: #ccc;
             border-radius: 50%;
             margin: 0 5px;

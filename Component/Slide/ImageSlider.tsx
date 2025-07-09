@@ -42,7 +42,6 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
         // 2. หน่วงเวลาเล็กน้อยเพื่อให้ React อัปเดต DOM และแสดงรูปภาพเก่าใน div "previous"
         setTimeout(() => {
-            console.log(previousSlideRef.current)
             if (previousSlideRef.current) {
                 // เริ่ม animation fade-out บน div รูปภาพเก่า
                 previousSlideRef.current.classList.add('fade-out');
@@ -50,7 +49,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
             // 3. เปลี่ยน index ของรูปภาพ "ปัจจุบัน"
             setCurrentSlideIndex(newIndex);
-            
+
             // 4. ตั้งค่าให้ div รูปภาพปัจจุบันเริ่ม fade-in
             // Note: เนื่องจาก div รูปภาพปัจจุบันถูกสร้างขึ้นใหม่เมื่อ currentSlideIndex เปลี่ยน
             // เราจะใช้ keyframes ที่ถูกกำหนดไว้ใน CSS เพื่อให้มันเริ่ม fade-in ทันทีที่ถูก render
@@ -64,7 +63,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
                 setIsTransitioning(false); // สิ้นสุดสถานะ transitioning
             }, animationDuration); // ระยะเวลาที่รูปเก่าเฟดออก (ควรตรงกับ animation duration ใน CSS)
 
-        }, 0); 
+        }, 0);
 
     }, [currentSlideIndex, isTransitioning]);
 
@@ -100,12 +99,12 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
         <div className="slider-container">
             <div className="slider-con">
                 <button className="slider-arrow prev" onClick={goToPrevSlide} disabled={isTransitioning}>
-                    <IoIosArrowBack/>
+                    <IoIosArrowBack />
                 </button>
                 <div className="slider-image-wrapper">
-                    <div 
-                        key={`current-slide-div-${currentSlideIndex}`} 
-                        ref={currentSlideRef} 
+                    <div
+                        key={`current-slide-div-${currentSlideIndex}`}
+                        ref={currentSlideRef}
                         className={`slide-item current-slide`}
                     >
                         <Image
@@ -117,21 +116,21 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
 
                     {/* DIV สำหรับรูปภาพเก่าที่กำลังเฟดออก */}
                     {previousSlideIndex !== null && (
-                        <div 
-                            key={`previous-slide-div-${previousSlideIndex}`} 
-                            ref={previousSlideRef} 
+                        <div
+                            key={`previous-slide-div-${previousSlideIndex}`}
+                            ref={previousSlideRef}
                             className={`slide-item previous-slide `}
                         >
                             <Image
                                 src={images[previousSlideIndex].src}
-                                alt={images[previousSlideIndex].alt}                           
+                                alt={images[previousSlideIndex].alt}
                                 className="slide-image"
                             />
                         </div>
                     )}
                 </div>
                 <button className="slider-arrow next" onClick={goToNextSlide} disabled={isTransitioning}>
-                    <IoIosArrowForward/>
+                    <IoIosArrowForward />
                 </button>
             </div>
             {/* Pagination Dots */}
