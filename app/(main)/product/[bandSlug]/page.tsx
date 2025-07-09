@@ -3,14 +3,11 @@ import SlidePorduct from "@/Component/Product/SlideProduct";
 import { getProductHilglight } from "@/lib/product";
 import sty from '../product.module.css'
 import ShowProduct from "@/Component/Product/ShowProduct";
+import React from "react";
 
-interface BandPageProps {
-  params: {
-    bandSlug: string;
-  };
-}
-export default async function BrandPage({ params }: BandPageProps) {
- const { bandSlug } = await params;
+
+const BrandPage = async({params}:{ params: Promise<{bandSlug: string}>})=> {
+  const { bandSlug } = await params;
 
   const GetProduct = await getProductHilglight(bandSlug);
   return (
@@ -27,3 +24,6 @@ export default async function BrandPage({ params }: BandPageProps) {
     </div>
   )
 }
+export default BrandPage;
+
+
