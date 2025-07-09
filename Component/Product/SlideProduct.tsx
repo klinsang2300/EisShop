@@ -49,7 +49,7 @@ const SlidePorduct: React.FC<ImageSliderProps> = ({ slides }) => {
                 setIsTransitioning(false); // สิ้นสุดสถานะ transitioning
             }, animationDurationMs);
 
-        }, 1000); // หน่วงเวลาเล็กน้อยให้ DOM อัปเดตก่อนใส่ class
+        }, 50); // หน่วงเวลาเล็กน้อยให้ DOM อัปเดตก่อนใส่ class
     }, [currentSlideIndex, isTransitioning]);
 
     const goToNextSlide = useCallback(() => {
@@ -143,11 +143,6 @@ const SlidePorduct: React.FC<ImageSliderProps> = ({ slides }) => {
                     <IoIosArrowForward />
                 </button>
             </div>
-
-
-
-
-
 
             {/* Indicators/Dots */}
             <div className={sty.dotsContainer}>

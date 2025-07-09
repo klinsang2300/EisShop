@@ -79,22 +79,17 @@
 
         .imageWrapper.fade-in {
             animation: fade-in 1s forwards;
-
             z-index: 1;
-
         }
 
 
         .imageWrapper.fade-out {
             animation: fade-out 1s forwards;
-
             z-index: 3;
-
         }
 
         .slideImage {
             object-fit: cover;
-
         }
 
         .navButton {
@@ -110,7 +105,7 @@
             border-color: #CCCCCC;
             border-width: 0.039rem;
             border-style: solid;
-
+z-index: 10; 
         }
 
         .prevButton {
@@ -145,20 +140,3 @@
 
 
 }
-
-/* .slidesWrapper {
-    display: flex;
-    width: 100%;
-    transition: transform 0.5s ease-in-out;
-}
-
-
-
-
-
-
-
-
-
-
-*/

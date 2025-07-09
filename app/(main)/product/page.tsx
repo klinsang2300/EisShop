@@ -3,15 +3,15 @@ import { getProductHilglight } from "@/lib/product"
 import sty from './product.module.css'
 import ShowProduct from "@/Component/Product/ShowProduct";
 const ProductPage = async () => {
-  const getproductHilglight = await getProductHilglight('');
+  const getProduct = await getProductHilglight('');
   return (
   <div className={sty.container}>
         <div className={sty.slide}>
-            <SlidePorduct slides={getproductHilglight.ImageSlide} />
+            <SlidePorduct slides={getProduct .ImageSlide} />
         </div>
         <div className={sty.BoxProduct}>
           <ShowProduct
-            product={getproductHilglight.Product}
+            tabData={getProduct.TabDataProduct}
             headername="PRODUCT"
           />
         </div>

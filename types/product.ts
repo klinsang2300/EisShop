@@ -2,7 +2,7 @@ import { StaticImageData } from "next/image";
 
 export interface ImageItem {
     src: string | StaticImageData;
-    alt: string; 
+    alt: string;
 }
 
 export interface SlideContent {
@@ -21,10 +21,15 @@ export interface ProductData {
     sliderImages: ProductType[];
 }
 export interface ProductProp {
-    [key: string]: ProductData; 
+    [key: string]: ProductType[];
 }
 
 
-export interface ProductDetail{
-    [key:string] :ProductType
+export interface ProductDetail {
+    [key: string]: ProductType
+}
+export interface tabData {
+    tabindex: number,
+    tabname: string,
+    products: ProductType[],
 }

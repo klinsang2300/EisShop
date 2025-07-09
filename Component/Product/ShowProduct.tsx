@@ -1,33 +1,23 @@
 'use client'
-import { ProductProp, ProductType } from "@/types/product"
+import { ProductType, tabData } from "@/types/product"
 import React, { useEffect, useMemo, useState } from "react"
 import sty from './css/ShowProduct.module.css'
 import Image from "next/image"
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
 interface ShowProductProp {
-    product: ProductProp,
+    tabData: tabData[],
     headername: string
 }
-interface tabData {
-    tabindex: number,
-    tabname: string,
-    tabsname: string
-}
-const ITEMS_PER_PAGE = 16;
-const TabData: tabData[] = [
-    { tabindex: 0, tabname: 'PRODUCT RECCOMEND', tabsname: 'RECCOMEND' },
-    { tabindex: 1, tabname: 'BAST SEALLER', tabsname: 'BAST' },
-    { tabindex: 2, tabname: 'ALBUM BEST SELLER', tabsname: 'ALBUM' },
-    { tabindex: 3, tabname: 'LIVE', tabsname: 'LIVE' }];
-const ShowProduct: React.FC<ShowProductProp> = ({ product, headername }) => {
 
+const ITEMS_PER_PAGE = 16;
+
+const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
     const [tabindex, setTabIndex] = useState(0)
     const [currentPage, setCurrentPage] = useState(0);
 
     const currentTabProducts: ProductType[] = useMemo(() => {
-        const Tabname = TabData[tabindex].tabsname;
-        return product[Tabname]?.sliderImages || [];
-    }, [tabindex, product])
+        return tabData[tabindex].products || [];
+    }, [tabindex, tabData])
 
     const productsToDisplay: ProductType[] = useMemo(() => {
         const startIndex = currentPage * ITEMS_PER_PAGE;
@@ -57,13 +47,14 @@ const ShowProduct: React.FC<ShowProductProp> = ({ product, headername }) => {
     const goToNextPage = () => {
         setCurrentPage((prevPage) => (prevPage === totalPages - 1 ? 0 : prevPage + 1));
     };
+
     return (
         <div className={sty.container}>
             <div className={sty.header}>
                 <p>{headername}</p>
             </div>
             <div className={sty.tabdataContainer}>
-                {TabData.map((item, index) => (
+                {tabData.map((item, index) => (
                     <div
                         key={index}
                         className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
@@ -90,26 +81,26 @@ const ShowProduct: React.FC<ShowProductProp> = ({ product, headername }) => {
                         No products available in this category.
                     </p>
                 )}
-       
-            </div>
-                     {totalPages > 1 && ( // แสดง Dots เมื่อมีมากกว่า 1 หน้า
-                    <div className={sty.paginationDotsContainer}>
-                        <button className={`${sty.navButton} ${sty.prevPageButton}`} onClick={goToPrevPage}>
-                            <IoIosArrowBack />
-                        </button>
-                        {Array.from({ length: totalPages }, (_, index) => (
-                            <span
-                                key={index}
-                                className={`${sty.paginationDot} ${currentPage === index ? sty.activeDot : ''}`}
-                                onClick={() => goToPage(index)}
-                            ></span>
-                        ))}
 
-                        <button className={`${sty.navButton} ${sty.nextPageButton}`} onClick={goToNextPage}>
-                            <IoIosArrowForward />
-                        </button>
-                    </div>
-                )}
+            </div>
+            {totalPages > 1 && ( // แสดง Dots เมื่อมีมากกว่า 1 หน้า
+                <div className={sty.paginationDotsContainer}>
+                    <button className={`${sty.navButton} ${sty.prevPageButton}`} onClick={goToPrevPage}>
+                        <IoIosArrowBack />
+                    </button>
+                    {Array.from({ length: totalPages }, (_, index) => (
+                        <span
+                            key={index}
+                            className={`${sty.paginationDot} ${currentPage === index ? sty.activeDot : ''}`}
+                            onClick={() => goToPage(index)}
+                        ></span>
+                    ))}
+
+                    <button className={`${sty.navButton} ${sty.nextPageButton}`} onClick={goToNextPage}>
+                        <IoIosArrowForward />
+                    </button>
+                </div>
+            )}
 
         </div>
     );
