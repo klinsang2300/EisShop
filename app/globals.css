@@ -53,6 +53,10 @@ body {
 
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 
 
 a:focus,
@@ -133,7 +137,6 @@ footer {
 
 .auth-main {
   height: 100vh;
-
 
   .login-container-main {
     display: flex;

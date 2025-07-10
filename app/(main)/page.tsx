@@ -50,7 +50,7 @@ export default async function Home() {
         <div>
           <ImageSlider images={slides} autoPlay={true} />
         </div>
-        <div className="my-[2%] ">
+        <div className="my-[3.2%] ">
           <Review reviews={dummyReviews} />
         </div>
       </div>

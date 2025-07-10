@@ -5,11 +5,11 @@ nav {
   align-items: center;
   justify-content: space-between;
   background-color: #ffff;
-  max-height: 4.188rem;
+  max-height: 65px;
+  height: 100%;
   width: 100%;
-
-  padding: 0 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  padding: 0 2.3rem;
+  box-shadow: 0 7px 11px rgba(0, 0, 0, 0.2);
   top: 0;
   left: 0;
   z-index: 100;
@@ -19,103 +19,108 @@ nav {
 nav .nav-logo {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem;
+
+  .nav-logo-text {
+    font-size: 53.59px;
+    font-family: var(--font-plaster), cursive;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  .nav-logo-luge {
+    font-size: 14.18px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-prompt), sans-serif;
+      /* ใช้ฟอนต์หลัก */
+    }
+
+    p {
+      font-size: 0.5rem;
+      font-weight: 300;
+      color: #666;
+    }
+  }
 }
 
-nav .nav-logo .nav-logo-text {
-  font-size: 3.349rem;
-  font-family: var(--font-plaster), cursive;
-}
 
-nav .nav-logo .nav-logo-text a {
-  text-decoration: none;
-  color: inherit;
-  /* ให้สีเหมือน parent */
-}
-
-nav .nav-logo .nav-logo-luge {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-nav .nav-logo .nav-logo-luge button {
-  font-size: 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--font-prompt), sans-serif;
-  /* ใช้ฟอนต์หลัก */
-}
-
-nav .nav-logo .nav-logo-luge p {
-  font-size: 0.6rem;
-  color: #666;
-}
 
 nav .nav-menu {
   display: flex;
   align-items: center;
   font-weight: 500;
   list-style: none;
-  /* ลบ bullet points ของ ul */
   padding: 0;
   margin: 0;
-}
-
-nav .nav-menu li {
-  margin-inline: 0.063rem;
-  position: relative;
-}
-
-nav .nav-menu li .nav-menu-link {
-  border-radius: 0.2rem;
-  padding: 0.7rem 1rem;
-  text-decoration: none;
-  color: inherit;
+  font-size: 14.18px;
+  color: #565656;
   font-family: var(--font-prompt), sans-serif;
-  /* ใช้ฟอนต์หลัก */
-  white-space: nowrap;
-  /* ป้องกันข้อความขึ้นบรรทัดใหม่ */
+
+  li {
+    margin-inline: 0.5rem;
+    position: relative;
+
+    .nav-menu-link {
+      border-radius: 0.2rem;
+      padding: 0.7rem 1rem;
+      text-decoration: none;
+      white-space: nowrap;
+
+      &:hover {
+        background-color: #F2F2F2;
+      }
+
+    }
+
+    .nav-menu-button {
+      border-radius: 0.2rem;
+      padding: 0.7rem 1rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-weight: inherit;
+      color: inherit;
+      font-family: var(--font-prompt), sans-serif;
+      /* ใช้ฟอนต์หลัก */
+      white-space: nowrap;
+
+      span {
+        margin-left: 2px;
+        font-size: 0.8rem;
+      }
+
+      &:hover {
+        background-color: #F2F2F2;
+      }
+    }
+  }
 }
 
-nav .nav-menu li .nav-menu-link:hover {
-  background-color: #F2F2F2;
-}
 
-nav .nav-menu li .nav-menu-button {
-  border-radius: 0.2rem;
-  padding: 0.7rem 1rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-weight: inherit;
-  color: inherit;
-  font-family: var(--font-prompt), sans-serif;
-  /* ใช้ฟอนต์หลัก */
-  white-space: nowrap;
-}
-
-nav .nav-menu li .nav-menu-button span {
-  margin-left: 2px;
-  font-size: 0.8rem;
-}
-
-nav .nav-menu li .nav-menu-button:hover {
-  background-color: #F2F2F2;
-}
 
 nav .nav-button {
+  font-size: 14.18px;
   display: flex;
   align-items: center;
   background-color: #E4EFFF;
   border-radius: 2rem;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 1rem;
   font-weight: 500;
   font-family: var(--font-prompt), sans-serif;
-
-  .nav-button-link{
-    padding: 0.3rem 0.7rem;
+  gap: 0.5em;
+color:#565656;
+  .nav-button-link {
+    padding: 0.3rem 0.5rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -130,6 +135,7 @@ nav .nav-button {
   p {
     margin-inline: 0.188rem;
     font-size: 0.6rem;
+    font-weight: 20;
     color: #666;
   }
 }
