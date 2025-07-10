@@ -1,5 +1,7 @@
 
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
+
 const withPWA = require('@ducanh2912/next-pwa').default({
   dest: 'public', // ตำแหน่งที่จะสร้างไฟล์ PWA
   register: true, // ลงทะเบียน Service Worker
@@ -11,5 +13,5 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
-
-module.exports = nextConfig;
+const withNextIntl = createNextIntlPlugin();
+module.exports = withPWA(withNextIntl(nextConfig));
