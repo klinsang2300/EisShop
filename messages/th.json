@@ -1,0 +1,47 @@
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  },
+  "NavbarLogin": {
+    "backtohome": "ย้อนกลับสู่หน้าหลัก",
+    "backtologin": "ย้อนกลับสู่เข้าสู่ระบบ"
+  },
+  "Login": {
+    "Login": "เข้าสู่ระบบ",
+    "Sign up": "สมัครสมาชิก",
+    "Email": "อีเมล์",
+    "Password": "รหัสผ่าน",
+    "Forgot": "ลืมรหัสผ่าน?",
+    "Condition1": "ใช่, ฉันยินยอมใน ",
+    "Condition2": "เงื่อนไขและข้อกำหนดทั้งหมด",
+    "btntext": "LOGIN",
+    "btnpending": "LOGIN"
+  }, 
+  "Signup": {
+    "Login": "เข้าสู่ระบบ",
+    "Signup": "สมัครสมาชิก",
+    "Email": "อีเมล์",
+    "Address": "ที่อยู่",
+    "AddressDetail": "(บ้านเลขที่ หมู่บ้าน หรือ คอนโด ถนน ซอย)",
+    "Addressplaceholder": "ที่อยู่ของคุณ",
+    "Password": "รหัสผ่าน",
+    "PasswordDetail": "(Your password)",
+    "Passwordplaceholder": "password",
+    "PasswordCondition": "รหัสผ่านต้องมีอย่างน้อย 8 ตัวอักษร และประกอบด้วย ตัวพิมพ์ใหญ่(A-Z) ตัวพิมพ์เล็ก(a-z) \nตัวเลข (0–9) และอักขระพิเศษ (.-!@#$%^&*)",
+    "Province": "จังหวัด",
+    "PasswordConfirm": "ยืนยันรหัสผ่าน",
+    "PasswordConfirmplaceholder": "confirm password",
+    "District": "อำเภอ",
+    "Name": "ชื่อจริง",
+    "SubDistrict": "ตำบล",
+    "Surname": "นามสกุล",
+    "PostalCode":"รหัสไปรษณีย์",
+    "Datebirth":"วันเกิด",
+    "Telephone":"เบอร์โทร",
+    "Favorite":"วงเกาหลีหรือศิลปินที่ชอบ",
+    "Condition1": "ใช่, ฉันยินยอมการสมัครและยอมรับ",
+    "Condition2": "เงื่อนไขทั้งหมด",
+    "btntext": "LOGIN",
+    "btnpending": "LOGIN"
+}}

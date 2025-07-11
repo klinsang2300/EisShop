@@ -1,14 +1,15 @@
 // middleware.ts
 import createMiddleware from 'next-intl/middleware';
 import { NextRequest, NextResponse } from 'next/server';
-import { locales, defaultLocale, pathnames } from './i18n/routing'; // <--- Path นี้ถูกต้องสำหรับโครงสร้างของคุณ
+import { locales, defaultLocale } from './i18n/routing';
+// ไม่ต้อง import { URLPattern } from 'next/server'; แล้ว เพราะเราจะไม่ใช้ตรงๆ ในการ test dynamic paths
+
 
 const nextIntlMiddleware = createMiddleware({
   locales,
   defaultLocale,
-  localePrefix: 'as-needed',
-  localeDetection: false,
-  pathnames,
+  localePrefix: 'as-needed', // จะเติม locale prefix เมื่อจำเป็น
+  localeDetection: false, // ปิดการตรวจจับ locale อัตโนมัติจาก browser
 });
 
 // Paths สำหรับ Authentication ที่จะถูก Redirect/Rewrite ถ้าเข้าถึงโดยไม่มี Locale Prefix
@@ -16,11 +17,15 @@ const authPathsWithoutLocale = ['/login', '/signup'];
 
 // Paths ที่ต้องการให้ "ข้าม" การประมวลผล Locale โดย next-intl middleware
 // เนื่องจากเราต้องการให้ Path เหล่านี้ไม่มี Locale Prefix และถูกจัดการโดย app/(main)
-const nonLocalePaths = [
-    '/', // <--- หน้า Home
+const nonLocaleExactPaths = [ // สำหรับ Exact Match Paths
+    '/',
     '/product',
-    '/product/[bandSlug]',
-    // เพิ่ม Path อื่นๆ ที่อยู่ใน app/(main) ที่ไม่ต้องการ locale prefix ที่นี่
+];
+
+// Paths สำหรับ Dynamic Routes ที่ต้องการให้ "ข้าม" Locale Prefix
+// เราจะใช้ String startsWith() แทน URLPattern เพราะ URLPattern ดูเหมือนจะทำงานไม่สมบูรณ์
+const nonLocaleDynamicPathPrefixes = [
+    '/product/', // สำหรับ /product/BTS, /product/Tw7
 ];
 
 
@@ -31,44 +36,49 @@ export function middleware(request: NextRequest) {
   console.log(`[Middleware] Full URL: ${request.url}`);
   console.log(`[Middleware] Method: ${request.method}`);
   console.log(`[Middleware] Query Params: ${request.nextUrl.searchParams.toString()}`);
-  // สำหรับ headers ที่ละเอียดแบบนั้น ลอง console.log(request.headers) แล้วค่อยๆ ดูใน Object
-  // หรือใช้ request.headers.get('header-name') เพื่อดึงค่าที่ต้องการ
 
-
-  // ขั้นแรก: จัดการ Static Assets และ Internal Next.js Files
-  // ถ้าเป็น Path เหล่านี้ ไม่ต้องให้ next-intl middleware เข้าไปยุ่ง
+  // 1. จัดการ Static Assets และ Internal Next.js Files
   if (
       pathname.startsWith('/_next/') ||
       pathname.startsWith('/api/') ||
       pathname.startsWith('/Bts/') || // รูปภาพของคุณ
-      pathname.includes('.') ||       // ไฟล์ที่มีนามสกุลอื่นๆ (.css, .js, .json, .png, etc.)
+      pathname.includes('.') ||        // ไฟล์ที่มีนามสกุลอื่นๆ (.css, .js, .json, .png, etc.)
       pathname.startsWith('/manifest.json') ||
       pathname.startsWith('/.well-known/')
   ) {
       console.log(`[Middleware] Skipping next-intl middleware for static/internal asset: ${pathname}`);
-      return NextResponse.next(); // ปล่อยให้ Next.js จัดการ
-  }
-
-  // ขั้นที่สอง: จัดการ Path ที่เราต้องการให้ไม่มี Locale Prefix
-  // ถ้า Path ที่เข้ามาอยู่ใน nonLocalePaths และไม่มี Locale Prefix (เช่น '/')
-  // ให้ปล่อยผ่านไปยัง Next.js โดยตรง เพื่อให้ app/(main)/page.tsx จัดการ
-  // โดยไม่ต้องให้ next-intl middleware ทำการ Rewrite
-  if (nonLocalePaths.includes(pathname) && !locales.some(locale => pathname.startsWith(`/${locale}/`))) {
-      console.log(`[Middleware] Handling non-locale path: ${pathname}. Skipping nextIntlMiddleware.`);
       return NextResponse.next();
   }
 
+  // 2. ตรวจสอบว่า Path เป็น Non-Locale Path หรือไม่
+  //    - ตรวจสอบ Exact Paths ก่อน
+  const isExactNonLocalePath = nonLocaleExactPaths.includes(pathname);
 
-  // ขั้นที่สาม: จัดการ Path ที่เป็น Auth ที่ต้องการ Locale Prefix
-  // ถ้า Request มาที่ Path ที่อยู่ใน authPathsWithoutLocale โดยตรง (ไม่มี locale prefix)
-  // ให้ next-intl จัดการการ redirect ไปยัง default locale (เช่น /login -> /en/login)
-  if (authPathsWithoutLocale.includes(pathname)) {
-    console.log(`[Middleware] Handling auth path without locale: ${pathname}`);
-    return nextIntlMiddleware(request); // next-intl จะทำการ redirect/rewrite ให้
+  //    - ตรวจสอบ Dynamic Paths โดยใช้ startsWith
+  //      เช่น ถ้า pathname คือ /product/BTS, จะตรงกับ '/product/'
+  const isDynamicNonLocalePath = nonLocaleDynamicPathPrefixes.some(prefix => pathname.startsWith(prefix));
+
+  //    - ตรวจสอบว่า Path ปัจจุบันมี Locale Prefix อยู่แล้วหรือไม่
+  const hasLocalePrefix = locales.some(locale => pathname.startsWith(`/${locale}/`));
+
+  //    - ถ้าเป็น Non-Locale Path (Exact หรือ Dynamic) และยังไม่มี Locale Prefix
+  const shouldSkipNextIntl = (isExactNonLocalePath || isDynamicNonLocalePath) && !hasLocalePrefix;
+
+
+  if (shouldSkipNextIntl) {
+      console.log(`[Middleware] Handling non-locale path: ${pathname}. Skipping nextIntlMiddleware.`);
+      return NextResponse.next(); // ปล่อยให้ Next.js จัดการ Route นี้โดยตรง
   }
 
-  // ขั้นสุดท้าย: สำหรับ Path อื่นๆ ทั้งหมดที่คาดว่าจะมี Locale Prefix หรือควรถูกจัดการโดย next-intl
-  // ให้ next-intl middleware จัดการการ Rewrite หรือการแสดงผลตามปกติ
+
+  // 3. จัดการ Path ที่เป็น Auth ที่ต้องการ Locale Prefix
+  //    (ถ้า Request ยังไม่ถูกข้ามในขั้นตอนก่อนหน้า)
+  if (authPathsWithoutLocale.includes(pathname)) {
+    console.log(`[Middleware] Handling auth path without locale: ${pathname}`);
+    return nextIntlMiddleware(request); // ให้ next-intl จัดการการ redirect/rewrite ไปยัง default locale
+  }
+
+  // 4. สำหรับ Path อื่นๆ ทั้งหมดที่คาดว่าจะมี Locale Prefix หรือควรถูกจัดการโดย next-intl
   const response = nextIntlMiddleware(request);
   console.log(`[Middleware] nextIntlMiddleware processed, status: ${response.status}`);
   
@@ -76,18 +86,7 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Matcher เพื่อให้ middleware เห็นเฉพาะ request ที่เราต้องการให้มันจัดการ
-  // และยกเว้น Path ที่เราไม่ต้องการให้มันยุ่ง
   matcher: [
-    // Match all paths except those starting with:
-    // - /api (API routes)
-    // - /_next/static (Next.js static assets)
-    // - /_next/image (Next.js image optimization files)
-    // - /_next/internal (Next.js internal files)
-    // - /favicon.ico (Favicon)
-    // - /manifest.json (PWA manifest)
-    // - /.well-known (Standard web paths)
-    // - /Bts (โฟลเดอร์รูปภาพของคุณใน public)
     '/((?!api|_next/static|_next/image|_next/internal|favicon.ico|manifest.json|.well-known|Bts).*)',
   ],
 };

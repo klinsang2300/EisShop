@@ -2,5 +2,47 @@
   "HomePage": {
     "title": "Hello world!",
     "about": "Go to the about page"
+  },
+  "NavbarLogin": {
+    "backtohome": "Back to Home",
+    "backtologin": "Back to Login"
+  },
+  "Login": {
+    "Login": "Log in",
+    "Sign up": "Sign up",
+    "Email": "Email",
+    "Password": "Password",
+    "Forgot": "Forgot Password ?",
+    "Condition1": "Yes, I agree to",
+    "Condition2": "all the tems and conditions",
+    "btntext": "LOGIN",
+    "btnpending": "LOGIN"
+  },
+  "Signup": {
+    "Login": "Log in",
+    "Signup": "Sign up",
+    "Email": "Email",
+    "Address": "Address",
+    "AddressDetail": "(address no. village or Condo Road Avenua)",
+    "Addressplaceholder": "your address",
+    "Password": "Password",
+    "PasswordDetail": "(Your password)",
+    "Passwordplaceholder": "password",
+    "PasswordCondition": "Password must be at least 8 characters and include uppercase letters(A–Z),\nlowercase letters(a–z), numbers (0–9), and special characters (.-!@#$%^&*)",
+    "Province": "Province",
+    "PasswordConfirm": "Confirm Password",
+    "PasswordConfirmplaceholder": "confirm password",
+    "District": "District",
+    "Name": "Name",
+    "SubDistrict": "Sub District",
+    "Surname": "Surname",
+    "PostalCode":"PostalCode",
+    "Datebirth":"Date of birth ",
+    "Telephone":"Telephone",
+    "Favorite":"Favorite Artists",
+    "Condition1": "Yes, I agree to",
+    "Condition2": "all the tems and conditions",
+    "btntext": "LOGIN",
+    "btnpending": "LOGIN"
   }
 }

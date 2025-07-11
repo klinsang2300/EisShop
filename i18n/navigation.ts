@@ -1,3 +1,4 @@
+// i18n/navgation.ts
 import {createNavigation} from 'next-intl/navigation';
 import {routing} from './routing';
  

@@ -34,18 +34,32 @@
       rgba(228, 239, 255, 0.3) 64%,
 
       rgba(128, 179, 255, 0.3) 100%);
-  --my-custom-gradient-main-gray: linear-gradient(to right,
-      rgba(89, 88, 88, 0.3) 0%,
-      rgba(202, 202, 202, 0.3) 32%,
-      rgba(202, 202, 202, 0.3) 64%,
-      rgba(89, 88, 88, 0.3) 100%);
+  --my-custom-gradient-main-gray1: linear-gradient(to right,
+      rgba(89, 88, 88, 0.1) 0%,
+      rgba(202, 202, 202, 0.1) 32%,
+      rgba(202, 202, 202, 0.1) 64%,
+      rgba(61, 61, 61, 0.1) 100%);
+  --my-custom-gradient-main-gray2: linear-gradient(to right,
+      rgba(89, 88, 88, 0.1) 0%,
+      rgba(202, 202, 202, 0.1) 32%,
+      rgba(202, 202, 202, 0.1) 64%,
+      rgba(61, 61, 61, 0.1) 100%);
+  --my-custom-gradient-main-gray3: linear-gradient(to right,
+      rgba(89, 88, 88, 0.1) 0%,
+      rgba(202, 202, 202, 0.1) 32%,
+      rgba(202, 202, 202, 0.1) 64%,
+      rgba(61, 61, 61, 0.1) 100%);
 }
 
 body {
   padding: 0;
   margin: 0;
   background-image:
-    var(--my-custom-gradient-main-blue), var(--my-custom-gradient-main-gray);
+    var(--my-custom-gradient-main-blue), 
+    var(--my-custom-gradient-main-gray1),
+    var(--my-custom-gradient-main-gray2),
+    var(--my-custom-gradient-main-gray3)
+    ;
   backdrop-filter: blur(50px);
   color: #565656;
   width: 100%;
@@ -135,18 +149,20 @@ footer {
   }
 }
 
-.auth-main {
-  height: 100vh;
 
-  .login-container-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
+.authpage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+
+  .auth-main {
+    flex: 1;
 
   }
 }
+
+
 
 .Pagemain {
   display: flex;

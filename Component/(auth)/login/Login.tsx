@@ -1,11 +1,14 @@
 'use client'
-import Link from "next/link";
 import { useFormStatus } from "react-dom";
 import './Login.css'
 import { useState } from "react";
 import { GiCheckMark } from "react-icons/gi";
+import { useTranslations } from "next-intl";
+import PasswordInput from "../Passowrd/Password";
+import { Link } from "@/i18n/navigation";
 export default function Login() {
     const [isChecked, setIsChecked] = useState(false);
+    const t = useTranslations('Login')
     const handleToggle = () => {
         setIsChecked(!isChecked)
         console.log(isChecked)
@@ -14,35 +17,29 @@ export default function Login() {
         <div className="login-container">
             <div className="login-header">
                 <h1>SG</h1>
-                <h2>Log in / <Link href="/">Sign up</Link></h2>
+                <h2>{t('Login')} / <Link href="/signup">{t('Sign up')}</Link></h2>
             </div>
             <form>
-                <div className="from-menu">
-                    <p>Email</p>
+                <div className="from-menu top">
+                    <p>{t('Email')}</p>
                     <div className="box-inut">
                         <input
                             id="Email"
                             name="Email"
                             placeholder="yoer.email@gmail.com"
-
                         />
                     </div>
                 </div>
                 <div className="from-menu">
-                    <p>Password</p>
-                    <div className="box-inut">
-                        <input
-                            id="Password"
-                            name="Password"
-                            placeholder="password"
-                            type="password"
-                        />
-                    </div>
+                    <p>{t('Password')}</p>
+                 
+                        <PasswordInput placeholder="password" idName="passowrd" className="box-inut"/>                   
+                         
                 </div>
                 <div className="box-menu">
                     <div className="box-menu-link">
-                        <Link href="/">Foget Password?</Link>
-                        <Link href="/">Sing up</Link>
+                        <Link href="/">{t('Forgot')}</Link>
+                        <Link href="/signup">{t('Sign up')}</Link>
                     </div>
                     <div className="box-combobox">
                         <div className="cmb-box">
@@ -57,18 +54,25 @@ export default function Login() {
                                 {isChecked && (<GiCheckMark className="checkIcon" />)}
                             </span>
                         </div>
-                        <label>Yes, I agree to <Link href="">all the terms and conditions</Link> </label>
+                        <label>{t('Condition1')} <Link href="">{t('Condition2')}</Link> </label>
                     </div>
                 </div>
                 <div className="box-button">
-                    <Summitbutton />
+                    <Summitbutton 
+                        ButtonPending=""
+                        Buttontext=""
+                    />
                 </div>
             </form>
         </div>
     )
 }
+interface ButtonProp{
+    Buttontext:string,
+    ButtonPending:string
+}
 
-export const Summitbutton = () => {
+export const Summitbutton:React.FC<ButtonProp> = ({Buttontext,ButtonPending}) => {
     const { pending } = useFormStatus();
     return (<button type="submit" disabled={pending}>
         {pending ? 'LOGIN' : 'LOGIN'}
