@@ -3,40 +3,25 @@
     flex-direction: column;
     box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.2);
     border-radius: 2rem 2rem;
-    max-width: 1440px;
+    max-width: 1393px;
     width: 100%;
     margin: 0 auto;
 
     .hot-product-header {
         background-color: #ffffff;
-        font-size: 2.5rem;
-        font-weight: 600;
-        padding-block: 1rem;
+        padding-block: 1.7rem;
         border-radius: 2rem 2rem 0 0;
 
         p {
-            margin-left: 2rem;
+            margin-left: 2.6rem;
             background-image: linear-gradient(to bottom, #FF1216 0%, #590D18 100%);
-
-
-            /* ทำให้พื้นหลังถูกคลิปตามรูปร่างของข้อความ */
             -webkit-background-clip: text;
-            /* สำหรับ WebKit browsers (Chrome, Safari, Edge) */
             background-clip: text;
-
-            /* ทำให้ข้อความโปร่งใส เพื่อให้ gradient ด้านหลังแสดงผล */
             -webkit-text-fill-color: transparent;
-            /* สำหรับ WebKit browsers */
             color: transparent;
-            /* สำหรับเบราว์เซอร์อื่นๆ (อาจไม่จำเป็นต้องใช้ร่วมกับ -webkit-text-fill-color) */
-
-            /* คุณสมบัติอื่นๆ ของข้อความ (ขนาด, font-weight ฯลฯ) */
-            font-size: 3rem;
-            /* ตัวอย่างขนาด */
-            font-weight: bold;
-            /* ตัวอย่างความหนา */
+            font-size: 40px;
+            font-weight: 600;
             display: inline-block;
-            /* เพื่อให้ background-clip ทำงานได้ถูกต้องในบางกรณี */
         }
     }
 
@@ -48,31 +33,15 @@
         padding-inline: 1rem;
         padding-block: 2rem;
         row-gap: 1rem;
-
+        justify-items: center;
         .box-main {
             display: flex;
             flex-direction: column;
             justify-items: center;
             width: 100%;
-            padding-inline: 1rem;
             position: relative;
-
-            &:not(:last-of-type)::after {
-
-                content: '';
-                position: absolute;
-                top: 5%;
-
-                bottom: 5%;
-
-                right: 0;
-
-                width: 2px;
-
-                background-color: #D9D8D8;
-
-
-            }
+            max-width: 287px;
+            max-height: 344px;
 
             .box-image {
                 position: relative;
@@ -96,7 +65,7 @@
                 font-size: 1rem;
                 font-weight: 500;
                 color: #828282;
-                margin-block: 0.25rem;
+                margin-block: 0.25rem 1rem;
             }
 
             .box-price {
@@ -115,10 +84,11 @@
             .box-remask {
                 font-size: 0.75rem;
                 font-weight: 400;
-                border-radius: 0.4rem;
+                border-radius: 0.7rem;
                 background-color: #F3F3F3;
-                width: fit-content;
+                width: 100%;
                 padding: 0.4rem 0.7rem;
+                text-align: center;
                 color: #AE5051;
             }
         }

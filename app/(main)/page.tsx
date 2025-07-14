@@ -15,6 +15,7 @@ import logo5 from '@/public/logo/Nct.png'
 import { ProductBts, ProductEn, ProductHot, ProductNct, ProductSt, ProductTwm } from "@/lib/data";
 import RecommendProduct from "@/Component/Product/Recproduct";
 import BackToTopButton from "@/Component/BackToTopButton";
+
 export default async function Home() {
   const slides = [
     { src: slide1, alt: 'Knit Cardigan Beige' },
@@ -30,14 +31,14 @@ export default async function Home() {
     { name: 'Eisliz', rating: 4.5, reviewDetail: 'ร้านแพ๊คสินค้ามาหนาแน่นมากค่ะ ขนาดกล่องบู้บี้แต่ข้างในไม่ซึกหลอเลย' },
     { name: 'Wanvisa', rating: 3, reviewDetail: 'แจ้งสถานะสินค้าชัดเจนดีค่ะ ไม่ต้องคอยกังวล หรือคอยสอบถาม' },
   ];
-
+ 
   const RecArtists = [
-    { src: logo1, name: 'BTS' },
-    { src: logo2, name: 'TOMMORROW X TOGETHER' },
-    { src: logo3, name: 'ENHYPEN' },
-    { src: logo4, name: 'SEVENTEEN' },
-    { src: logo5, name: 'NCT' },
-  ]
+    { src: logo1, name: 'BTS', id: 'bts-products' }, // เพิ่ม id ที่ตรงกับส่วนสินค้า
+    { src: logo2, name: 'TOMMORROW X TOGETHER', id: 'tomorrow-x-together-products' },
+    { src: logo3, name: 'ENHYPEN', id: 'enhypen-products' },
+    { src: logo4, name: 'SEVENTEEN', id: 'seventeen-products' },
+    { src: logo5, name: 'NCT', id: 'nct-products' },
+  ];
   const productBts = await ProductBts();
   const productTmw = await ProductTwm();
   const productEn = await ProductEn();
@@ -57,39 +58,41 @@ export default async function Home() {
       <div className="container-product">
         <div className="my-[3%] ">
           <RecommendArtists RecArtists={RecArtists} />
+
         </div>
-        <div className="my-[3%] ">
+        <div id="bts-products" className="my-[3%] pt-[1%]">
           <RecommendProduct
             AstistName="BTS"
             productData={productBts}
             headColorStr="--my-custom-gradient-gray" />
         </div>
-        <div className="my-[3%] ">
+        <div id="tomorrow-x-together-products"  className="my-[3%] pt-[1%]">
           <RecommendProduct
             AstistName="TOMMORROW X TOGETHER"
             productData={productTmw}
             headColorStr="--my-custom-gradient-red" />
+         
         </div>
-        <div className="my-[3%]  ">
+        <div id="enhypen-products"  className="my-[3%]  pt-[1%]">
           <RecommendProduct
             AstistName="ENHYPEN"
             productData={productEn}
             headColorStr="--my-custom-gradient-grays" />
         </div>
-        <div className="my-[3%]  ">
+        <div id="seventeen-products" className="my-[3%]  pt-[1%]">
           <RecommendProduct
             AstistName="SEVENTEEN"
             productData={productSt}
             headColorStr="--my-custom-gradient-pink" />
         </div>
-        <div className="my-[3%]  ">
+        <div id="nct-products" className="my-[3%]  pt-[1%]">
           <RecommendProduct
             AstistName="NCT"
             productData={productNct}
             headColorStr="--my-custom-gradient-green" />
         </div>
 
-        <div className="my-[3%]  ">
+        <div className="my-[3%]  pt-[1%]">
           <HotProduct
             productData={productHot} />
         </div>

@@ -11,21 +11,44 @@
         color: #FFFFFF;
         font-weight: 400;
         padding: 0.8rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
         p {
             margin-left: 2rem;
         }
+
+        .buttonArtis {
+            margin-right: 3rem;
+            font-size: 16.13px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.4rem;
+
+            svg {
+                display: inline;
+            }
+
+            &:hover {
+                background-color: #FFFFFF;
+                color: #565656;
+            }
+        }
     }
 
     .tabdataContainer {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 1rem;
         padding: 1.8rem 2rem;
         background-color: #f6f6f6;
-
+        position: relative;
         .tabdata {
-            margin-left: 1%;
-            font-size: 0.813rem;
-            font-weight: 500;
+
+            font-size: 13px;
+            font-weight: 400;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -35,13 +58,32 @@
             min-height: 2.047rem;
             background-color: #ffffff;
             cursor: pointer;
-
         }
 
         .tabdata:hover,
         .tabdata.active {
             background-color: #565656;
             color: #ffffff
+        }
+        .tabbutton{
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            bottom:  -20;
+            right: 48.5%;
+            
+            width: 35.71px;
+            height: 35.71px;
+            border-radius: 50%;
+            border-width: 0.51px;
+            border-color: #cccccc;
+            border-style: solid;
+            background-color: #FFFFFF;
+            cursor: pointer;
+            svg{
+                font-size: 26px;
+            }
         }
     }
 
@@ -135,14 +177,19 @@
         .paginationDot.activeDot {
             background-color: #565656;
         }
-        .navButton{
+
+        .navButton {
             font-size: 1.2rem;
             margin-bottom: 0.1rem;
         }
-       .prevPageButton{
+
+        .prevPageButton {
             margin-right: 0.6rem;
         }
-        .navButton.nextPageButton{  margin-left: 0.6rem;}
+
+        .navButton.nextPageButton {
+            margin-left: 0.6rem;
+        }
     }
 
 

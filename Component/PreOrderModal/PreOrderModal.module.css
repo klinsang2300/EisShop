@@ -1,0 +1,152 @@
+/* components/Css/PreOrderModal.module.css */
+
+/* Overlay: พื้นหลังสีดำโปร่งแสง */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal Content: กล่อง Modal ที่อยู่ตรงกลาง */
+.preOrderModalContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2rem 2.3rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  z-index: 10001;
+  max-height: 680px;
+  max-width: 409px;
+  width: 100%;
+  height: 100%;
+  animation: scaleIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+
+
+/* หัวข้อใน Modal */
+.modalTitle {
+  font-size: 22.62px;
+  font-weight: 400;
+  color: #555;
+
+  text-align: center;
+}
+
+/* Grid สำหรับ Artist ใน Modal */
+.modalArtistsGrid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 600px;
+  column-gap: 3rem;
+  row-gap: 1.2rem;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 100%;
+}
+
+/* แต่ละ Artist item ใน Modal */
+.modalArtistItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s ease-in-out;
+  flex: 0 0 auto;
+  /* ป้องกันรายการยืด/หด */
+  width: 80.48px;
+
+}
+
+.modalArtistItem:hover {
+  transform: translateY(-5px);
+}
+
+/* กรอบรูป Artist ใน Modal */
+.modalArtistLogo {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 0.8rem;
+
+}
+
+/* ชื่อ Artist ใน Modal */
+.modalArtistName {
+
+  font-size: 10px;
+  font-weight: 600;
+  text-align: center;
+  white-space: normal;
+  word-break: break-word;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 600px) {
+  .preOrderModalContent {
+    padding: 1.5rem;
+    max-width: 350px;
+  }
+
+  .modalArtistsGrid {
+    max-height: 250px;
+    /* ลด max-height สำหรับจอเล็ก (อาจจะ 2-3 แถว) */
+    gap: 1rem;
+    flex-direction: row;
+    /* เปลี่ยนเป็นเรียงตามแถวในจอเล็กมากๆ หากต้องการ */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .modalArtistItem {
+    width: 80px;
+  }
+
+  .modalArtistLogo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .modalArtistName {
+    font-size: 0.75rem;
+  }
+}

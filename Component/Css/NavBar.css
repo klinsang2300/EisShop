@@ -13,7 +13,47 @@ nav {
   top: 0;
   left: 0;
   z-index: 100;
+  position: sticky;
 
+
+  .main-menu {
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 65px;
+    background-color: rgba(61, 61, 61, 0.5);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 3rem 3rem;
+
+    .menu-recommend {
+      padding-inline: 5%;
+
+    }
+
+    .menu-show-artis {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      font-size: 16.13px;
+      height: 42px;
+      color: #ffffff;
+      background-color: #B9C4D5;
+      border-radius: 0 0 3rem 3rem;
+      cursor: pointer;
+      transition: 0.3s;
+      svg {
+        margin-left: 0.8rem;
+   font-size: 22px;
+      }
+      &:hover{
+        background-color: #6483B0;
+      }
+    }
+  }
 }
 
 nav .nav-logo {
@@ -94,9 +134,10 @@ nav .nav-menu {
       /* ใช้ฟอนต์หลัก */
       white-space: nowrap;
 
-      span {
-        margin-left: 2px;
-        font-size: 0.8rem;
+      svg{
+        display: inline;
+        font-size: 1.2rem;
+        margin-bottom: 2px;
       }
 
       &:hover {
@@ -118,7 +159,8 @@ nav .nav-button {
   font-weight: 500;
   font-family: var(--font-prompt), sans-serif;
   gap: 0.5em;
-color:#565656;
+  color: #565656;
+
   .nav-button-link {
     padding: 0.3rem 0.5rem;
     background: none;
@@ -144,19 +186,7 @@ color:#565656;
 
 
 /* Dropdown Menu (menu-recommend) */
-nav .menu-recommend {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  width: 100%;
-  left: 0;
-  top: 4.5rem;
-  padding-inline: 5%;
-  background-color: rgba(177, 177, 177, 0.5);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-
-
-}
+nav .menu-recommend {}
 
 nav .menu-recommend .menu-recommend-text {
   margin-block: 0.6rem;

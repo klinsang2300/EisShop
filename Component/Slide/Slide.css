@@ -118,25 +118,25 @@
 }
 
 .slider-dots .dot {
-    width: 1.2vw;
-    height: 1.2vw;
-    min-width: 12px;
-    min-height: 12px;
-    max-width: 1.5rem;
-    max-height: 1.5rem;
+    width: 1.4vw;
+    height: 1.4vw;
+    min-width: 1rem;
+    min-height: 1rem;
+    max-width: 2rem;
+    max-height: 2rem;
 
     border-radius: 50%;
     background-color: #E2E2E2;
     opacity: 0.3;
     cursor: pointer;
     transition: background-color 1s ease, transform 1s ease, opacity 1s ease, translate 1s ease-in;
-    box-shadow: 0 0.2rem 0.2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(4rem);
 }
 
 .slider-dots .dot.active {
     background-color: rgba(99, 115, 140, 0.5);
-    transform: scale(1.1);
+    transform: scale(0.93);
     opacity: 0.3;
     translate: 0 -0.03rem;
 }

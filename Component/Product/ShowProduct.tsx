@@ -3,7 +3,9 @@ import { ProductType, tabData } from "@/types/product"
 import React, { useEffect, useMemo, useState } from "react"
 import sty from './css/ShowProduct.module.css'
 import Image from "next/image"
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward } from "react-icons/io"
+import { RiArrowDownSFill } from "react-icons/ri"
+import { usePreOrderModal } from "@/context/PreOrderModalContext"
 interface ShowProductProp {
     tabData: tabData[],
     headername: string
@@ -14,8 +16,14 @@ const ITEMS_PER_PAGE = 16;
 const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
     const [tabindex, setTabIndex] = useState(0)
     const [currentPage, setCurrentPage] = useState(0);
-
+    const { openPreOrderModal } = usePreOrderModal();
+    const [isshowtaball, setIsshowTaball] = useState(false);
+    const TabShow: tabData[] = useMemo(() => {
+        const endtab: number = tabData.length > 7 ? 7 : tabData.length - 1;
+        return tabData.slice(0, endtab);
+    }, [tabindex, tabData])
     const currentTabProducts: ProductType[] = useMemo(() => {
+
         return tabData[tabindex].products || [];
     }, [tabindex, tabData])
 
@@ -28,6 +36,13 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
     const totalPages: number = useMemo(() => {
         return Math.ceil(currentTabProducts.length / ITEMS_PER_PAGE);
     }, [currentTabProducts])
+
+    const isProductAll: Boolean = useMemo(() => {
+        return headername === 'PRODUCT';
+    }, [headername])
+
+
+
 
     const toggleTabindex = (item: tabData) => {
         setTabIndex(item.tabindex);
@@ -52,9 +67,16 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
         <div className={sty.container}>
             <div className={sty.header}>
                 <p>{headername}</p>
+                {isProductAll && (
+                    <div className={sty.buttonArtis} role="button" onClick={openPreOrderModal}>
+                        Select Artust <RiArrowDownSFill />
+
+                    </div>)}
+
             </div>
+
             <div className={sty.tabdataContainer}>
-                {tabData.map((item, index) => (
+                {isshowtaball ? (tabData.map((item, index) => (
                     <div
                         key={index}
                         className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
@@ -62,7 +84,17 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
                     >
                         {item.tabname}
                     </div>
-                ))}
+                ))) : (TabShow.map((item, index) => (
+                    <div
+                        key={index}
+                        className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
+                        onClick={() => toggleTabindex(item)}
+                    >
+                        {item.tabname}
+                  
+                    </div>
+                )))}
+      <div className={sty.tabbutton} role="button"><IoIosArrowDown/></div>
             </div>
             <div className={sty.ProductContainer}>
                 {productsToDisplay.length > 0 ? (

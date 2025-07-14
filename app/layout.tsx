@@ -4,10 +4,7 @@ import { Plaster, Prompt } from "next/font/google";
 import "./globals.css";
 
 import { ProductMenuProvider } from "@/context/ProductMenuContext";
-import MainContentWrapper from "@/Component/MainContentWrapper";
-
-import NavBar from "@/Component/Navbar";
-import Footer from "@/Component/Footer";
+import { PreOrderModalProvider } from "@/context/PreOrderModalContext";
 
 
 const prompt = Prompt({
@@ -42,7 +39,9 @@ export default function RootLayout({
     <html lang="en" className={`${prompt.variable} ${plaster.variable}`}>
       <body className={`${prompt.className}`}>
         <ProductMenuProvider>
-          {children}
+          <PreOrderModalProvider>
+            {children}
+          </PreOrderModalProvider>
         </ProductMenuProvider>
       </body>
     </html>

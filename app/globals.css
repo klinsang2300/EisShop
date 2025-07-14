@@ -28,11 +28,8 @@
       rgba(192, 215, 37) 100%);
   --my-custom-gradient-main-blue: linear-gradient(to right,
       rgba(128, 179, 255, 0.3) 0%,
-
       rgba(228, 239, 255, 0.3) 32%,
-
       rgba(228, 239, 255, 0.3) 64%,
-
       rgba(128, 179, 255, 0.3) 100%);
   --my-custom-gradient-main-gray1: linear-gradient(to right,
       rgba(89, 88, 88, 0.1) 0%,
@@ -51,27 +48,28 @@
       rgba(61, 61, 61, 0.1) 100%);
 }
 
+html {
+  scroll-behavior: smooth; /* ทำให้การเลื่อนไปยัง anchor link นุ่มนวลขึ้น */
+}
+
 body {
   padding: 0;
   margin: 0;
   background-image:
-    var(--my-custom-gradient-main-blue), 
+    var(--my-custom-gradient-main-blue),
     var(--my-custom-gradient-main-gray1),
     var(--my-custom-gradient-main-gray2),
-    var(--my-custom-gradient-main-gray3)
-    ;
+    var(--my-custom-gradient-main-gray3);
+
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px); /* สำหรับ Safari */
   color: #565656;
   width: 100%;
-
-
 }
 
 body::-webkit-scrollbar {
   display: none;
 }
-
-
 
 a:focus,
 a:focus-visible {
@@ -90,21 +88,26 @@ a:focus-visible {
     background-color: #F5F5F5;
   }
 
-  .icon-to-top {
-    background-color: rgba(235, 235, 235, 0.15);
-    padding: 0.6rem 0.7rem;
-    right: 2rem;
-    bottom: 2rem;
-    position: fixed;
-    border-radius: 1rem;
-    cursor: pointer;
+}
 
-    svg {
-      font-size: 2.3rem;
-      color: #1E1E1E;
+/* *** ย้าย .icon-to-top และ svg styling ออกมาข้างนอก .page-container *** */
+.icon-to-top {
+  background-color: rgba(235, 235, 235, 0.7); /* เพิ่ม opacity เพื่อให้มองเห็นง่ายขึ้น */
+  padding: 0.6rem 0.7rem;
+  right: 2rem;
+  bottom: 2rem;
+  position: fixed;
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเพื่อความเด่นชัด */
+  z-index: 1000; /* สำคัญมาก: กำหนด z-index ให้สูงพอ */
+  backdrop-filter: blur(5px); /* เพิ่มเอฟเฟกต์เบลอพื้นหลัง (ถ้าต้องการ) */
+  -webkit-backdrop-filter: blur(5px); /* สำหรับ Safari */
+}
 
-    }
-  }
+.icon-to-top svg {
+  font-size: 2.3rem;
+  color: #1E1E1E;
 }
 
 
@@ -143,7 +146,6 @@ footer {
             font-size: 0.7rem;
           }
         }
-
       }
     }
   }
@@ -162,16 +164,12 @@ footer {
   }
 }
 
-
-
 .Pagemain {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
 
   main {
-
     flex: 1;
   }
 

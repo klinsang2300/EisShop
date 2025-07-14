@@ -1,6 +1,7 @@
 import Footer from "@/Component/Footer"
 import MainContentWrapper from "@/Component/MainContentWrapper"
 import NavBar from "@/Component/Navbar"
+import PreOrderModal from "@/Component/PreOrderModal/PreOrderModal"
 
 
 export default function MainLayout({
@@ -11,8 +12,11 @@ export default function MainLayout({
     return (
         <div className="Pagemain">
             <NavBar />
-            <MainContentWrapper> {children}</MainContentWrapper>
+            <MainContentWrapper> 
+                {children}
+                </MainContentWrapper>
             <Footer />
+            <PreOrderModal/>
         </div>
 
     )

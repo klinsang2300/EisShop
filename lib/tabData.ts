@@ -25,6 +25,11 @@ export const GetTabData = (bandSlug: string) => {
                 { tabindex: 4, tabname: 'PHOTOBOOK', products: ProductAll['PHOTO'] || null },
                 { tabindex: 5, tabname: 'LIVE', products: ProductAll['LIVE'] || null },
                 { tabindex: 6, tabname: 'MERCH', products: ProductAll['MERCH'] || null },
+                { tabindex: 7, tabname: 'TOUR MERCH', products: ProductAll['TMERCH'] || null },
+                { tabindex: 8, tabname: 'BT21', products: ProductAll['BT21'] || null },
+                { tabindex: 9, tabname: 'WEVERSE', products: ProductAll['WEVERSE'] || null },
+                { tabindex: 10, tabname: 'TinnyTAN', products: ProductAll['TAN'] || null },
+         
             ]
         }
     }

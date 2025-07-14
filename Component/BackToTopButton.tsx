@@ -30,7 +30,7 @@ export default function BackToTopButton() {
   };
 
   return (
-    <> {/* ใช้ Fragment เพราะปุ่มจะถูก render ใน Home component */}
+    <> 
       {showButton && (
         <div
           className="icon-to-top"
