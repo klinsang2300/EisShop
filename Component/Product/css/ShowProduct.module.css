@@ -38,54 +38,86 @@
         }
     }
 
+
+
+    .tabMenuWrapper {
+        position: relative;
+        padding: 1.5rem 2rem;
+        background-color: #f6f6f6;
+    }
+
+    /* แถบ Tab ปกติ 7 ตัว */
     .tabdataContainer {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         gap: 1rem;
-        padding: 1.8rem 2rem;
+        width: 100%;
+    }
+
+    .tabdata {
+        font-size: 13px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-inline: 1%;
+        border-radius: 1rem;
+        min-width: 10.375rem;
+        min-height: 2.047rem;
+        background-color: #ffffff;
+        cursor: pointer;
+        text-align: center;
+
+    }
+
+    .tabdata:hover,
+    .tabdata.active {
+        background-color: #565656;
+        color: #ffffff;
+    }
+
+    .overlayTabContainer {
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        left: 0;
+        padding: 1.5rem 2rem;
         background-color: #f6f6f6;
-        position: relative;
-        .tabdata {
+        border-radius: 0 0  1.2rem 1.2rem  ;
+        box-shadow: 0 0.1rem  rgba(0, 0, 0, 0.2);
+    }
 
-            font-size: 13px;
-            font-weight: 400;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-inline: 1%;
-            border-radius: 1rem;
-            min-width: 10.375rem;
-            min-height: 2.047rem;
-            background-color: #ffffff;
-            cursor: pointer;
-        }
+    /* ปุ่ม Show/Hide */
+    .tabbutton {
+        position: absolute;
+        /* อ้างอิงจาก tabMenuWrapper */
+        bottom: -1rem;
+        /* อยู่ด้านล่างของ tabMenuWrapper */
+        left: 50%;
+        /* เลื่อนมาครึ่งทาง */
+        transform: translateX(-50%);
+        /* จัดกึ่งกลางจริงๆ */
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-        .tabdata:hover,
-        .tabdata.active {
-            background-color: #565656;
-            color: #ffffff
-        }
-        .tabbutton{
-            position: absolute;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            bottom:  -20;
-            right: 48.5%;
-            
-            width: 35.71px;
-            height: 35.71px;
-            border-radius: 50%;
-            border-width: 0.51px;
-            border-color: #cccccc;
-            border-style: solid;
-            background-color: #FFFFFF;
-            cursor: pointer;
-            svg{
-                font-size: 26px;
-            }
+        width: 35.71px;
+        height: 32.46px;
+        border-radius: 50%;
+        border-width: 0.51px;
+        border-color: #cccccc;
+        border-style: solid;
+        background-color: #FFFFFF;
+        cursor: pointer;
+        z-index: 20;
+        /* ให้ปุ่มอยู่เหนือ overlayTabContainer */
+
+        svg {
+            font-size: 22px;
         }
     }
+
+
 
     .ProductContainer {
         background-color: #FFFFFF;

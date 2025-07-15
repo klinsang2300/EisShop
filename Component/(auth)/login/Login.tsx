@@ -54,7 +54,7 @@ export default function Login() {
                                 {isChecked && (<GiCheckMark className="checkIcon" />)}
                             </span>
                         </div>
-                        <label>{t('Condition1')} <Link href="">{t('Condition2')}</Link> </label>
+                        <label>{t('Condition1')} <Link href="/terms">{t('Condition2')}</Link> </label>
                     </div>
                 </div>
                 <div className="box-button">

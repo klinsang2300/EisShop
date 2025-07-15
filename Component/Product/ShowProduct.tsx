@@ -3,25 +3,50 @@ import { ProductType, tabData } from "@/types/product"
 import React, { useEffect, useMemo, useState } from "react"
 import sty from './css/ShowProduct.module.css'
 import Image from "next/image"
-import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward } from "react-icons/io"
+import { IoIosArrowBack, IoIosArrowDown, IoIosArrowForward, IoIosArrowUp } from "react-icons/io"
 import { RiArrowDownSFill } from "react-icons/ri"
 import { usePreOrderModal } from "@/context/PreOrderModalContext"
+import { Taviraj } from "next/font/google"
 interface ShowProductProp {
     tabData: tabData[],
     headername: string
 }
 
 const ITEMS_PER_PAGE = 16;
-
+const TABMENU_COUNT: number = 7;
 const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
     const [tabindex, setTabIndex] = useState(0)
     const [currentPage, setCurrentPage] = useState(0);
     const { openPreOrderModal } = usePreOrderModal();
     const [isshowtaball, setIsshowTaball] = useState(false);
-    const TabShow: tabData[] = useMemo(() => {
-        const endtab: number = tabData.length > 7 ? 7 : tabData.length - 1;
-        return tabData.slice(0, endtab);
-    }, [tabindex, tabData])
+
+    const { TabShow, IsshowButton } = useMemo(() => {
+        const TotalTab = tabData.length;
+        if (isshowtaball) {
+            return { TabShow: tabData.slice(0, TABMENU_COUNT), IsshowButton: true }
+        }
+        if (TotalTab <= TABMENU_COUNT) {
+            return { TabShow: tabData, IsshowButton: false };
+        }
+
+        let start = 0;
+        let end = TABMENU_COUNT - 1;
+        const middleOffset = Math.floor(TABMENU_COUNT / 2);
+        if (tabindex <= middleOffset) {
+            start = 0;
+            end = TABMENU_COUNT - 1;
+        } else if (tabindex >= TotalTab - (TABMENU_COUNT - middleOffset)) {
+            start = TotalTab - TABMENU_COUNT;
+            end = TotalTab - 1;
+        } else {
+            start = tabindex - middleOffset
+            end = tabindex + (TABMENU_COUNT - 1 - middleOffset)
+        }
+
+        return { TabShow: tabData.slice(start, end + 1), IsshowButton: true };
+    }, [tabindex, tabData, isshowtaball])
+
+
     const currentTabProducts: ProductType[] = useMemo(() => {
 
         return tabData[tabindex].products || [];
@@ -41,11 +66,9 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
         return headername === 'PRODUCT';
     }, [headername])
 
-
-
-
     const toggleTabindex = (item: tabData) => {
         setTabIndex(item.tabindex);
+        setIsshowTaball(false);
     }
     useEffect(() => {
         setCurrentPage(0)
@@ -63,6 +86,12 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
         setCurrentPage((prevPage) => (prevPage === totalPages - 1 ? 0 : prevPage + 1));
     };
 
+    const toggleShowTabMenu = () => {
+        setIsshowTaball(!isshowtaball);
+    }
+
+
+
     return (
         <div className={sty.container}>
             <div className={sty.header}>
@@ -75,27 +104,56 @@ const ShowProduct: React.FC<ShowProductProp> = ({ tabData, headername }) => {
 
             </div>
 
-            <div className={sty.tabdataContainer}>
-                {isshowtaball ? (tabData.map((item, index) => (
-                    <div
-                        key={index}
-                        className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
-                        onClick={() => toggleTabindex(item)}
-                    >
-                        {item.tabname}
+
+
+            <div className={sty.tabMenuWrapper}>
+
+                <div className={sty.tabdataContainer}>
+                    {TabShow.map((item, index) => (
+                        <div
+                            key={item.tabindex || `tab-${index}`} // ใช้ tabindex เป็น key ที่ไม่ซ้ำกัน
+                            className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
+                            onClick={() => toggleTabindex(item)}
+                        >
+                            {item.tabname}
+                        </div>
+                    ))}
+
+                    {IsshowButton && !isshowtaball && (
+                        <div className={sty.tabbutton} role="button" onClick={toggleShowTabMenu}>
+                             <IoIosArrowDown />
+                        </div>
+                    )}
+
+                </div>
+
+                {isshowtaball && (
+                    <div className={sty.overlayTabContainer}>
+                        <div className={sty.tabdataContainer}>
+                            {tabData.slice(TABMENU_COUNT).map((item, index) => (
+                                <div
+                                    key={item.tabindex || `tab-${index}`} // ใช้ tabindex เป็น key ที่ไม่ซ้ำกัน
+                                    className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
+                                    onClick={() => toggleTabindex(item)}
+                                >
+                                    {item.tabname}
+                                </div>
+                            ))}
+
+                            {IsshowButton && isshowtaball && (
+                                <div className={sty.tabbutton} role="button" onClick={toggleShowTabMenu}>
+                                    <IoIosArrowUp /> 
+                                </div>
+                            )}
+
+                        </div>
                     </div>
-                ))) : (TabShow.map((item, index) => (
-                    <div
-                        key={index}
-                        className={`${sty.tabdata} ${tabindex === item.tabindex ? sty.active : ''}`}
-                        onClick={() => toggleTabindex(item)}
-                    >
-                        {item.tabname}
-                  
-                    </div>
-                )))}
-      <div className={sty.tabbutton} role="button"><IoIosArrowDown/></div>
+                )}
+
+
             </div>
+
+
             <div className={sty.ProductContainer}>
                 {productsToDisplay.length > 0 ? (
                     productsToDisplay.map((item, index) => (
