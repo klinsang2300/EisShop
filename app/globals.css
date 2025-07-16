@@ -1,8 +1,7 @@
 /* app/globals.css */
 
-/* --- 1. Tailwind CSS Imports and Layers (Required for v4) --- */
-@import "tailwindcss/preflight";
-@tailwind utilities;
+/* --- 1. Tailwind CSS Import (Required for v4 - ตามที่คุณเจอว่าทำงาน) --- */
+@import "tailwindcss"; /* <-- ใช้บรรทัดนี้บรรทัดเดียว! */
 
 /* --- 2. Combined :root for all Custom Properties and Tailwind Content Paths --- */
 :root {
@@ -14,8 +13,7 @@
     /* Add any other paths where you use Tailwind CSS classes */
   );
 
-  /* Your existing Custom Gradient Properties */
-  --spacing: 100vw;
+
   --my-custom-gradient-gray: linear-gradient(to right,
       rgba(87, 87, 87) 0%,
       rgba(184, 184, 184) 52%,
@@ -61,7 +59,12 @@
       rgba(61, 61, 61, 0.1) 100%);
 }
 
-/* --- 3. Tailwind CSS v4 Theme Extension (Pure CSS way) --- */
+/* --- 3. Tailwind CSS v4 Theme Extension (Pure CSS way) ---
+   Customizing @tailwindcss/typography plugin here
+   Note: theme() helper is not directly available in pure CSS @layer theme in v4.
+   Use hardcoded values for now.
+   This .prose block will be applied globally when `prose` class is used.
+*/
 @layer theme {
   .prose {
     color: #4b5563; /* Equivalent to gray-700 */
@@ -111,6 +114,7 @@
       margin-top: 1rem;
       margin-bottom: 1rem;
       li {
+        line-height: 2;
         margin-bottom: 0.5rem;
         &::marker {
           color: #3b82f6; /* Equivalent to blue-500 */
@@ -123,10 +127,9 @@
       margin-top: 1rem;
       margin-bottom: 1rem;
       li {
+        line-height: 2;
         margin-bottom: 0.5rem;
-        &::marker {
-          color: #3b82f6; /* Equivalent to blue-500 */
-        }
+
       }
     }
     blockquote {

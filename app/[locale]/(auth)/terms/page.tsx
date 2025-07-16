@@ -1,77 +1,106 @@
-// app/[locale]/terms/page.tsx
+// app/terms/page.tsx
+import React from 'react';
+import styles from './terms.module.css'; // นำเข้า CSS Module สำหรับ layout
+import { getTranslations } from 'next-intl/server';
 
+// กำหนด Type สำหรับโครงสร้างข้อมูล
+interface SectionData {
+  heading: string;
+  items?: string[];
+  subsections?: SectionData[]; // subsections จะมีโครงสร้างเหมือน SectionData
+}
 
-import MarkdownContent from '@/Component/MarkdownContent';
-import { useTranslations } from 'next-intl';
-
-export default function TermsAndConditionsPage() {
-  // ดึงข้อมูลทั้งก้อนของ termsAndConditionsPage
-  // t.raw() จะให้ Object/Array ดิบๆ ไม่ใช่ string ที่ผ่านการแปล
-  const t = useTranslations('termsAndConditionsPage');
-  const pageData = t.raw('sections');
-
-  // ตรวจสอบว่า pageData เป็น Array และเรียงลำดับตาม 'order'
-  const sortedSections = Array.isArray(pageData)
-    ? [...pageData].sort((a: any, b: any) => a.order - b.order)
-    : [];
-
-
+// Component สำหรับแสดงแต่ละส่วนของข้อความเงื่อนไข
+// ทำให้ Section component สามารถเรียกตัวเองซ้ำได้ (recursive)
+function Section({ heading, items, subsections }: SectionData) {
   return (
-    <div className="container mx-auto  max-w-4xl"> {/* เพิ่ม max-w-4xl เพื่อจำกัดความกว้างของเนื้อหาหลัก */}
-      <h1 className="text-4xl font-extrabold  text-center text-gray-900">{t('title')}</h1>
+    <div className="mb-4"> {/* เพิ่ม margin-bottom เพื่อแยกระหว่างส่วน */}
+      <h2 className=" font-semibold mb-2">{heading}</h2>
 
-      {sortedSections.map((section: any) => (
-        <div key={section.id} className=" bg-white rounded-lg shadow-md">
-          {/* หัวข้อหลักของแต่ละ Section */}
-          <h2 className="text-3xl font-bold  border-b  text-blue-700">
-            {section.title}
-          </h2>
+      {/* รายการแบบตัวเลข (items) */}
+      {items && items.length > 0 && (
+        <ol className="list-decimal pl-5 mb-4">
+          {items.map((item, index) => (
+            <li key={index}>{item}</li>
+          ))}
+        </ol>
+      )}
 
-          {/* วนลูปแสดง Content Blocks ภายในแต่ละ Section */}
-          {section.contentBlocks.map((block: any, index: number) => {
-            switch (block.type) {
-              case 'paragraph':
-                // MarkdownContent จะจัดการ <p> ให้เอง
-                return (
-                  <MarkdownContent
-                    key={index}
-                    content={block.text}
-                    // className="mb-4" // สามารถเพิ่ม margin-bottom ที่นี่ได้ ถ้าต้องการควบคุม
-                  />
-                );
-              case 'subheading':
-                // MarkdownContent จะจัดการ ## (H2) ให้เอง
-                return (
-                  <MarkdownContent
-                    key={index}
-                    content={block.text}
-                    // className="mt-6 mb-3" // สามารถเพิ่ม margin-top/bottom ได้
-                  />
-                );
-              case 'list':
-                // MarkdownContent จะจัดการ - (ul) หรือ 1. (ol) ให้เอง
-                return (
-                  <MarkdownContent
-                    key={index}
-                    content={block.text}
-                    // className="mb-4"
-                  />
-                );
-              // สามารถเพิ่ม case อื่นๆ ได้ ถ้ามี type เพิ่มเติมในอนาคต (เช่น 'image', 'table')
-              default:
-                // Fallback สำหรับ type ที่ไม่รู้จัก
-                return (
-                  <MarkdownContent
-                    key={index}
-                    content={block.text}
-                    // className="mb-4"
-                  />
-                );
-            }
-          })}
+
+      {subsections && subsections.length > 0 && (
+        <div className="ml-2">
+          <ol className="list-decimal pl-5 mb-4">
+            {subsections.map((sub, index) => (
+              <li key={index} >{sub.heading}
+                {sub.subsections?.map((sub, index) => (
+                  <ul key={index}><SubSection key={index} {...sub} /></ul>
+                ))}
+              </li>
+            ))}
+          </ol>
         </div>
-      ))}
+      )}
     </div>
   );
-  
+}
+function SubSection({ heading, items, subsections }: SectionData) {
+  return (
+
+
+    <li>
+      {heading}
+      <div className="ml-4">
+        <ul>
+          {items?.map((item, index) => (<li key={index}>{item}</li>))}
+        </ul>
+        </div>
+    </li>
+
+
+  )
+}
+interface TermsPageProps {
+  params: {
+    locale: string;
+  };
+}
+
+export default async function TermsPage({ params }: TermsPageProps) {
+
+  const t= await  getTranslations ('termsAndConditionsPage')
+  const sectionsData:SectionData[] = t.raw('sections');
+  return (
+    <div className='page-container my-[1%]'>
+      <div className={styles.container}>
+        <div className={styles.header}>
+          <h1>SG</h1>
+       <p>{t('title')}</p> {/* ใช้ t() สำหรับข้อความภาษา */}
+          <p>{t('subtitle')}</p> {/* ใช้ t() สำหรับข้อความภาษา */}
+        </div>
+
+        <div className={styles.card}>
+
+          {/* ใช้ className="prose" สำหรับเนื้อหาหลัก เพื่อให้ Typography Plugin ทำงาน */}
+          <div className="prose prose-lg">
+            {/* Loop ผ่าน sections หลัก และเรียก Section component เพื่อ render */}
+            {sectionsData && sectionsData.length > 0 && sectionsData.map((section, index) => (
+              <Section key={index} {...section} />
+            ))}
+          </div>
+
+          {/* ปุ่มและข้อความ "I agree to all the terms and conditions" */}
+          <div className="flex flex-col items-center mt-8">
+            <label className="flex items-center space-x-2 mb-4">
+              <input type="checkbox" className="form-checkbox text-blue-600" />
+              <span className="text-sm text-gray-700">Yes, I agree to all the terms and conditions</span>
+            </label>
+            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded-lg shadow-md">
+              CONFIRM
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  );
 }

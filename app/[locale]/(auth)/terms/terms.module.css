@@ -1,0 +1,36 @@
+/* app/terms/terms.module.css */
+
+.container{
+  background-color: #ffffff;
+  max-width: 1172px;
+  width: 100%;
+  margin: 0 auto;
+   padding: 2rem 4rem; 
+     box-shadow: 0 5px 5px 5px rgba(0, 0, 0, 0.1); 
+}
+.card {
+    width: 100%;
+  background-color: #F5F5F5;
+  padding: 2rem 4rem; 
+
+
+  font-size: 1rem;
+  color: #6B6B6B;
+}
+
+
+.header {
+  width: 100%;
+  margin-bottom: 1.5rem; /* mb-6 */
+   padding: 0rem 4rem; 
+   font-size: 1.5rem;
+   font-weight: 500;
+   color: #6B6B6B;
+  h1{
+     font-size: 6.399rem;
+    font-family: var(--font-plaster), cursive;
+    text-align: center;
+  }
+}
+
+
